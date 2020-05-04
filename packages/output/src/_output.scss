@@ -5,6 +5,7 @@
 //
 
 // Let check if the output is set already, if not. Let's set it.
+$output: () !default;
 $output-current: () !default;
 @if length($output-current) < 1 {
 	$output-current: $output;
@@ -23,14 +24,14 @@ $output-current: () !default;
 		// children won't be outputted.
 		//
 
-		$newList: str-split($arg, '-');
+		$newList: str-split($arg, "-");
 
 		@if length($newList) > 1 {
 			@if check-output(nth($newList, 1)) == false {
 				$Return: false;
 			}
 		}
-	} @else if $arg == 'full' {
+	} @else if $arg == "full" {
 		$Return: true;
 	} @else {
 		//
@@ -43,7 +44,6 @@ $output-current: () !default;
 	@return $Return;
 }
 
-
 @function output($args...) {
 	// Set a default of output true
 	$doOutput: true;
@@ -55,14 +55,14 @@ $output-current: () !default;
 		//
 		// Check if its a grid output
 		//
-		@if type-of($arg) == 'string' and str-index($arg, 'grid') == 1 {
+		@if type-of($arg) == "string" and str-index($arg, "grid") == 1 {
 			$isGrid: true;
 		}
-		@if type-of($arg) == 'string' {
+		@if type-of($arg) == "string" {
 			$doOutput: check-output($arg, true, $doOutput);
 		} @else {
 			@each $listArg in $arg {
-				@if type-of($arg) == 'bool' {
+				@if type-of($arg) == "bool" {
 					$doOutput: $arg;
 				} @else {
 					$doOutput: check-output($listArg, true, $doOutput);
@@ -74,14 +74,14 @@ $output-current: () !default;
 	//
 	//  Check the overall setting. If false, do not output any css
 	//
-	@if check-output('css', true, $doOutput) == false {
+	@if check-output("css", true, $doOutput) == false {
 		$doOutput: false;
 	}
 	//
 	//	The overruler to create all the css
 	//
 
-	@if check-output('full', true) == true {
+	@if check-output("full", true) == true {
 		$doOutput: true;
 	}
 
@@ -89,7 +89,7 @@ $output-current: () !default;
 	//	Grid Only output
 	//
 
-	@if check-output('grid-only', true) == true {
+	@if check-output("grid-only", true) == true {
 		@if $isGrid == false {
 			$doOutput: false;
 		} @else {

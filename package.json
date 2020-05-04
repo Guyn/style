@@ -26,6 +26,7 @@
 	"devDependencies": {
 		"lerna": "^3.19.0",
 		"node-sass": "^4.14.0",
-		"sass": "^1.26.5"
+		"sass": "^1.26.5",
+		"vitepress": "^0.1.1"
 	}
 }

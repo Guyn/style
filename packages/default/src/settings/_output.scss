@@ -1,0 +1,240 @@
+$output-css: false !default; //
+$output-full: false !default; //
+$output-debug: true !default; //
+$output-debug-full: true !default; //
+$output-debug-abbr: false !default; //
+$output-debug-bad-compute: false !default; //
+$output-debug-details: false !default; //
+$output-debug-figcaption: false !default; //
+$output-debug-form: false !default; //
+$output-debug-image: true !default; //
+$output-debug-layout: false !default; //
+$output-debug-legend: false !default; //
+$output-debug-link: false !default; //
+$output-debug-list: false !default; //
+$output-background-colors: true !default; //
+$output-text-colors: true !default; //
+$output-custom-properties: true !default; //
+$output-ease-classes: false !default; //
+$output-button: false !default; //
+$output-button-default: true !default; //
+$output-button-colors: true !default; //
+$output-button-sizes: true !default; //
+$output-button-rounded: true !default; //
+$output-button-round: true !default; //
+$output-button-icons: true !default; //
+$output-button-text-transform: true !default; //
+$output-button-rotated: true !default; //
+$output-button-border: true !default; //
+$output-custom-properties-media-queries: false !default; //
+$output-custom-properties-color: false !default; //
+$output-grid: true !default; //
+$output-grid-only: false !default; //
+$output-grid-helpers: false !default; //
+$output-grid-hide-show-classes: true !default; //
+$output-grid-flex: true !default; //
+$output-grid-only-classes: false !default; //
+$output-grid-counted-columns: true !default; //
+$output-grid-column: true !default; //
+$output-grid-parts: true !default; //
+$output-grid-offset: false !default; //
+$output-grid-push: false !default; //
+$output-grid-pull: false !default; //
+$output-grid-non-breaking-column: false !default; //
+$output-grid-columns: true !default; //
+$output-grid-cssgrid: false !default; //
+$output-grid-row-breakpoints: true !default; //
+$output-grid-mq-custom-properties: false !default; //
+$output-grid-no-mq-classes: false !default; //
+$output-grid-mq-small: true !default; //
+$output-grid-mq-medium: true !default; //
+$output-grid-mq-large: true !default; //
+$output-grid-mq-xlarge: true !default; //
+$output-grid-mq-xxlarge: false !default; //
+$output-components: true !default; //
+$output-blockquote: false !default; //
+$output-button-group: false !default; //
+$output-card: false !default; //
+$output-code: false !default; //
+$output-code-prism: false !default; //
+$output-color: true !default; //
+$output-color-background-colors: true !default; //
+$output-color-text-colors: true !default; //
+$output-content: true !default; //
+$output-content-link-filetypes: false !default; //
+$output-content-p-notices: false !default; //
+$output-content-list: true !default; //
+$output-content-line-height: true !default; //
+$output-content-row-example: false !default; //
+$output-content-hr: true !default; //
+$output-content-default-link: true !default; //
+$output-content-detail-list: false !default; //
+$output-data-label: false !default; //
+$output-detail-list: false !default; //
+$output-ease: true !default; //
+$output-form: false !default; //
+$output-form-fieldset: true !default; //
+$output-form-form: true !default; //
+$output-form-button: true !default; //
+$output-form-input-text: true !default; //
+$output-form-check-color: false !default; //
+$output-form-check-icon: false !default; //
+$output-form-check-text: false !default; //
+$output-form-checkbox: true !default; //
+$output-form-hidden: true !default; //
+$output-form-radio: true !default; //
+$output-form-range: true !default; //
+$output-form-switch: true !default; //
+$output-form-input: true !default; //
+$output-form-input-colored: false !default; //
+$output-form-textarea: true !default; //
+$output-form-select: true !default; //
+$output-form-label: true !default; //
+$output-form-field: true !default; //
+$output-helpers: true !default; //
+$output-reset: true !default; //
+$output-reset-meyerweb: true !default; //
+$output-reset-extra: true !default; //
+$output-horizontal-rule: true !default; //
+$output-icon: true !default; //
+$output-icons-specific: false !default; //
+$output-print: true !default; //
+$output-navigation: false !default; //
+$output-section: true !default; //
+$output-showmore: false !default; //
+$output-spacing: true !default; //
+$output-table: false !default; //
+$output-typography: true !default; //
+$output-typography-base: true !default; //
+$output-typography-headings: true !default; //
+$output-typography-margins: true !default; //
+$output-typography-usage: true !default; //
+$output-typography-weight-classes: false !default; //
+$output-pattern: false !default; //
+$output-pattern-checkered: true !default; //
+$output-pattern-cubes: true !default; //
+$output-pattern-dots: true !default; //
+$output-pattern-houndstooth: true !default; //
+$output-pattern-lines: true !default; //
+$output-pattern-zigzag: true !default; //
+$output: (
+	"css": false,
+	"full": false,
+	"debug": true,
+	"debug-full": true,
+	"debug-abbr": false,
+	"debug-bad-compute": false,
+	"debug-details": false,
+	"debug-figcaption": false,
+	"debug-form": false,
+	"debug-image": true,
+	"debug-layout": false,
+	"debug-legend": false,
+	"debug-link": false,
+	"debug-list": false,
+	"background-colors": true,
+	"text-colors": true,
+	"custom-properties": true,
+	"ease-classes": false,
+	"button": false,
+	"button-default": true,
+	"button-colors": true,
+	"button-sizes": true,
+	"button-rounded": true,
+	"button-round": true,
+	"button-icons": true,
+	"button-text-transform": true,
+	"button-rotated": true,
+	"button-border": true,
+	"custom-properties-media-queries": false,
+	"custom-properties-color": false,
+	"grid": true,
+	"grid-only": false,
+	"grid-helpers": false,
+	"grid-hide-show-classes": true,
+	"grid-flex": true,
+	"grid-only-classes": false,
+	"grid-counted-columns": true,
+	"grid-column": true,
+	"grid-parts": true,
+	"grid-offset": false,
+	"grid-push": false,
+	"grid-pull": false,
+	"grid-non-breaking-column": false,
+	"grid-columns": true,
+	"grid-cssgrid": false,
+	"grid-row-breakpoints": true,
+	"grid-mq-custom-properties": false,
+	"grid-no-mq-classes": false,
+	"grid-mq-small": true,
+	"grid-mq-medium": true,
+	"grid-mq-large": true,
+	"grid-mq-xlarge": true,
+	"grid-mq-xxlarge": false,
+	"components": true,
+	"blockquote": false,
+	"button-group": false,
+	"card": false,
+	"code": false,
+	"code-prism": false,
+	"color": true,
+	"color-background-colors": true,
+	"color-text-colors": true,
+	"content": true,
+	"content-link-filetypes": false,
+	"content-p-notices": false,
+	"content-list": true,
+	"content-line-height": true,
+	"content-row-example": false,
+	"content-hr": true,
+	"content-default-link": true,
+	"content-detail-list": false,
+	"data-label": false,
+	"detail-list": false,
+	"ease": true,
+	"form": false,
+	"form-fieldset": true,
+	"form-form": true,
+	"form-button": true,
+	"form-input-text": true,
+	"form-check-color": false,
+	"form-check-icon": false,
+	"form-check-text": false,
+	"form-checkbox": true,
+	"form-hidden": true,
+	"form-radio": true,
+	"form-range": true,
+	"form-switch": true,
+	"form-input": true,
+	"form-input-colored": false,
+	"form-textarea": true,
+	"form-select": true,
+	"form-label": true,
+	"form-field": true,
+	"helpers": true,
+	"reset": true,
+	"reset-meyerweb": true,
+	"reset-extra": true,
+	"horizontal-rule": true,
+	"icon": true,
+	"icons-specific": false,
+	"print": true,
+	"navigation": false,
+	"section": true,
+	"showmore": false,
+	"spacing": true,
+	"table": false,
+	"typography": true,
+	"typography-base": true,
+	"typography-headings": true,
+	"typography-margins": true,
+	"typography-usage": true,
+	"typography-weight-classes": false,
+	"pattern": false,
+	"pattern-checkered": true,
+	"pattern-cubes": true,
+	"pattern-dots": true,
+	"pattern-houndstooth": true,
+	"pattern-lines": true,
+	"pattern-zigzag": true,
+) !default; //

@@ -1,0 +1,39 @@
+// Keep the box sizing everywhere the same.
+body * {
+	box-sizing: border-box;
+}
+
+// A table always collapse without spacing.
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+// Basic reset of the body,html sizing.
+html,
+body {
+	min-height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+// Add the default font to any form element.
+input,
+textarea,
+select {
+	font: inherit;
+}
+// Reset the base UL and OL list. Only for element with a class.
+// When the element doesn't have a class, it probably comes from a CMS.
+// Which means it should have it basic styling.
+ul,
+ol {
+	&[class] {
+		padding: 0;
+		&,
+		li {
+			list-style-type: none;
+		}
+	}
+}

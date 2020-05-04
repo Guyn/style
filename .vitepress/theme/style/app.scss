@@ -6,7 +6,7 @@
 $output: set-output(css, true);
 
 // Output the whole framework
-@import "~guyn-style";
+@import "packages/style/index.static.scss";
 
 // Defined settings
 @import "tools/post";

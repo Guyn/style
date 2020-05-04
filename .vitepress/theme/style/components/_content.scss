@@ -1,0 +1,24 @@
+.content {
+	padding: grid(1);
+	@include min-(padding, 1, $mobile-padding);
+	max-width: 72ch;
+	margin: auto;
+
+	p:first-child {
+		font-size: 1.25em;
+	}
+
+	pre {
+		background-color: black;
+		padding: 1em;
+		color: white;
+		display: block;
+		max-width: 100%;
+		overflow: scroll;
+		width: auto;
+	}
+	code {
+		background-color: rgba(0, 0, 0, 0.1);
+		display: inline-block;
+	}
+}
