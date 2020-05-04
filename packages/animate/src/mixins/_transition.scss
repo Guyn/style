@@ -1,0 +1,61 @@
+// Generate the transition of a given prop with an ease;
+@mixin transition($prop, $timing, $ease-name, $delay: 0s){
+	$easeV: null;
+	// check if $timing is a timing
+	@if(is-time($timing) == false){
+		$timing: #{$timing}ms;
+	}
+	// check if $delay is a timing
+	@if(is-time($delay) == false){
+		$delay: #{$delay}ms;
+	}
+	// check if the ease exists
+	@if(ease-check($ease-name)){
+		$easeV: ease($ease-name);
+	}@else{
+		$easeV: $ease-name;
+	}
+
+	transition: unquote($prop) $timing $delay $easeV;
+}
+
+// Generate the transitions based on an array
+// @param {List} $list
+@mixin transition-group($list){
+	$transitionOutput: null;
+	$willChangeOutput: null;
+	@each $prop, $timing, $delay, $ease-name in $list {
+		$easeV: null;
+		// check if $timing is a timing
+		@if(is-time($timing) == false){
+			$timing: #{$timing}ms;
+		}
+		// check if $delay is a timing
+		@if(is-time($delay) == false){
+			$delay: #{$delay}ms;
+		}
+		// check if the ease exists
+		@if(ease-check($ease-name)){
+			$easeV: ease($ease-name);
+		}@else{
+			$easeV: $ease-name;
+		}
+
+		// concatenate props transition
+		@if($transitionOutput == null){
+			$transitionOutput: unquote($prop) $timing $delay $easeV;
+		}@else{
+			$transitionOutput: $transitionOutput, unquote($prop) $timing $delay $easeV;
+		}
+
+		//generate will-change props
+		@if($willChangeOutput == null){
+			$willChangeOutput: unquote($prop);
+		}@else{
+			$willChangeOutput: $willChangeOutput, unquote($prop);
+		}
+
+	}
+	transition: $transitionOutput;
+	will-change: $willChangeOutput;
+}

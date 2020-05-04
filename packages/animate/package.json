@@ -1,0 +1,13 @@
+{
+	"name": "@guyn-style/animate",
+	"version": "0.1.0-alpha.3",
+	"description": "Guyn Style Animation Module",
+	"main": "index.scss",
+	"private": false,
+	"scripts": {
+		"test": "sass test/index.scss"
+	},
+	"author": "Sil van Diepen",
+	"license": "MIT",
+	"gitHead": "ed55ca934fa57804d4e9fc953658b62ae2697385"
+}
