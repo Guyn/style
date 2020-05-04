@@ -1,6 +1,6 @@
 {
 	"name": "@guyn-style/typography",
-	"version": "0.1.0-alpha.6",
+	"version": "0.1.0-alpha.7",
 	"description": "Guyn Style Typography Module",
 	"main": "index.scss",
 	"private": false,
