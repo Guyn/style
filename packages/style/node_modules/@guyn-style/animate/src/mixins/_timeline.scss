@@ -1,0 +1,64 @@
+
+//
+// Timeline Animation
+//
+
+@mixin animation-timeline($args) {
+  --animation-total-seconds: "#{$animation-duration}";
+  $animation-name: "";
+
+  /* Global variables*/
+  $animation-duration: 0s !global;
+  $animation-steps: () !global;
+  animation: #{join($args)} #{$animation-duration};
+  @if type-of(nth($args,1)) == "string" {
+    $animation-name: nth($args, 1);
+  } @else {
+    $animation-name: unique-id();
+  }
+
+  /* Add the animation */
+  @content;
+
+  /*  Create the keyframes */
+  @if $animation-duration > 0s {
+    @keyframes #{$animation-name} {
+      $i: 0;
+      @each $animation-time, $animation-props in $animation-steps {
+        //  calculate percentage based on total duration
+        $i: $i + 1;
+        #{percentage($animation-time/$animation-duration)} {
+          --animation-step: '#{$i}';
+          @each $prop, $value in $animation-props {
+            #{$prop}: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+//
+// Add a step to the animation
+//
+
+@mixin animation-step($animation-delay: 0s, $animation-props: null) {
+  /* Check animation steps*/
+  @if $animation-steps {
+    /* Add the timing of this step to the total */
+    $animation-duration: $animation-duration + $animation-delay !global;
+    /* Set the total duration with the new step */
+    $animation-steps: map-merge(
+        $animation-steps,
+         ($animation-duration: $animation-props)
+      )
+      !global;
+  }
+}
+
+
+//
+// Example Usage
+//
+
+// https://codepen.io/silvandiepen/pen/YbKWOX

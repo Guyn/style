@@ -1,0 +1,18 @@
+@import "../node_modules/ssst/index.scss";
+@import "../index.local.scss"; 
+
+
+@include test('check-output()', 'Check if check-output from output module works'){
+	@include is-equal(check-output(css),false);
+}
+
+@include test('set-output()', 'the function to set custom settings'){
+	@include is-equal(map-get(set-output(css,true),'css'),true);
+}
+	
+@include test('set-output()', 'set-output is just triggered, did it remember'){
+	$output: set-output(css,true);
+	@include is-equal(map-get($output,'css'),true);
+}
+
+@debug show-output();

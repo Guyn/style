@@ -1,0 +1,26 @@
+// ------------------------------------------------------------ */
+//	Create all custom-properties for all the colors in the	   */
+//	current colorset. 										  */
+// --------------------------------------------------------- */
+@mixin henris-custom-properties-color(){
+	@each $color-name, $color-value in $color-default {
+		$variable: '--color-#{to-lower-case($color-name)}';
+		//hex
+		#{$variable}: $color-value;
+		//hsl
+		#{$variable}-hue: hue($color-value);
+		#{$variable}-saturation: saturation($color-value);
+		#{$variable}-lightness: lightness($color-value);
+		//rgb
+		#{$variable}-r: red($color-value);
+		#{$variable}-g: green($color-value);
+		#{$variable}-b: blue($color-value);
+		#{$variable}-rgb: red($color-value), green($color-value),
+			blue($color-value);
+	}
+}
+@if output('custom-properties-color') {
+	:root {
+		@include henris-custom-properties-color();
+	}
+}

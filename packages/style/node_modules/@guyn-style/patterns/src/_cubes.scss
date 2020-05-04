@@ -1,0 +1,56 @@
+@mixin pattern-cubes {
+		background-image: linear-gradient(
+				30deg,
+				#{$pattern-color-primary} 12%,
+				transparent 12.5%,
+				transparent 87%,
+				#{$pattern-color-primary} 87.5%,
+				#{$pattern-color-primary}
+			),
+			linear-gradient(
+				150deg,
+				#{$pattern-color-primary} 12%,
+				transparent 12.5%,
+				transparent 87%,
+				#{$pattern-color-primary} 87.5%,
+				#{$pattern-color-primary}
+			),
+			linear-gradient(
+				30deg,
+				#{$pattern-color-primary} 12%,
+				transparent 12.5%,
+				transparent 87%,
+				#{$pattern-color-primary} 87.5%,
+				#{$pattern-color-primary}
+			),
+			linear-gradient(
+				150deg,
+				#{$pattern-color-primary} 12%,
+				transparent 12.5%,
+				transparent 87%,
+				#{$pattern-color-primary} 87.5%,
+				#{$pattern-color-primary}
+			),
+			linear-gradient(
+				60deg,
+				#{$pattern-color-secondary} 25%,
+				transparent 25.5%,
+				transparent 75%,
+				#{$pattern-color-secondary} 75%,
+				#{$pattern-color-secondary}
+			),
+			linear-gradient(
+				60deg,
+				#{$pattern-color-secondary} 25%,
+				transparent 25.5%,
+				transparent 75%,
+				#{$pattern-color-secondary} 75%,
+				#{$pattern-color-secondary}
+			);
+		background-position: 0 0, 0 0,
+			calc(#{$pattern-size} / 2) #{$pattern-size-temp},
+			calc(#{$pattern-size} / 2) #{$pattern-size-temp}, 0 0,
+			calc(#{$pattern-size} / 2) #{$pattern-size-temp};
+		background-size: #{$pattern-size} calc(#{$pattern-size-temp} * 2);
+	}
+

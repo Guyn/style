@@ -1,11 +1,11 @@
 //Just to run the test.
 $base-prefix-grid: "" !default;
 
-// Import Utils
+// Import utilities
 @import "../index.scss";
 
 // Import External libraries
-@import "../node_modules/@guyn-style/utils/index.scss";
+@import "../node_modules/@guyn-style/utilities/index.scss";
 @import "../node_modules/ssst/index.scss";
 
 @include test("grid() function", "Return a function viewport width") {

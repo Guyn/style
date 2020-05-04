@@ -1,6 +1,6 @@
 @import "../node_modules/ssst/index.scss";
 @import "../index.local";
-@import "../node_modules/@guyn-style/utils/index.scss";
+@import "../node_modules/@guyn-style/utilities/index.scss";
 
 // Test the default easing set:
 @include test("ease() function", "Return an default easing") {

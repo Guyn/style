@@ -1,0 +1,85 @@
+// Set custom output
+@function set-output($var, $value) {
+	$output-temp: $output;
+	@if map-has-key($output, $var) {
+		@if $value == true OR $value == false {
+			$output-temp: map-set($output, $var, $value);
+		} @else {
+			@warn "Output can only be either 'true' or 'false'";
+		}
+	} @else {
+		@warn "#{$var} does not exist in output settings";
+	}
+	@return $output-temp;
+}
+
+@function add-length($string,$length){
+	@if str-length($string) < $length{
+		@while str-length($string) < $length{
+			$string: "#{$string} ";
+		}
+		@return $string; 
+	} @else {
+		@return $string;
+	}
+}
+@function repeat-str($string,$length){
+	$newStr: ();
+	@for $i from 0 through $length{
+		$newStr: append($newStr,$string);
+	}
+	@return list-to-str($newStr);
+}
+
+@function to-str($str) {
+	// Check if the value is already a string, if so just return the value
+	@if type-of($str) == 'string' {
+		@return $str;
+	}
+	// Check if the value will become a string, if you put it in quotes.
+	@else if type-of('#{$str}') == 'string' {
+		@return '#{$str}';
+	}
+	@else if $str == false {
+		@return 'false';
+	}
+	@else if $str == true {
+		@return 'false';
+	}
+	// If it still won't be a string, just try to throw it back.
+	@else {
+		@return '#{$str}';
+	}
+}
+
+@function show-output($key: null) {
+	$value: '';
+	@debug '	╭#{repeat-str('─',39)}┬#{repeat-str('─',20)}╮';
+	@debug '	│#{repeat-str(' ',39)}│#{repeat-str(' ',20)}│';
+	@if $key {
+		@debug '	│#{add-length(' ',5)}#{add-length($key,34)}│#{add-length(' ',5)}#{add-length(to-str(map-get($output,$key)), 16)}│';
+		@debug '	│#{repeat-str(' ',39)}│#{repeat-str(' ',20)}│';
+		$value: map-get($output, $key);
+	} @else {
+		@each $output-key, $output-value in $output {
+			@debug '	│#{add-length(' ',5)}#{add-length($output-key,30)}#{add-length(' ',5)}│#{add-length(' ',5)}#{add-length(to-str(map-get($output-value,$key)), 16)}│';
+			@debug '	│#{repeat-str(' ',39)}│#{repeat-str(' ',20)}│';
+		}
+		$value: $key;
+	}
+	@debug '	╰#{repeat-str('─',39)}┴#{repeat-str('─',20)}╯';
+	@return $value;
+}
+@function return-output($key) {
+	$value: '';
+	@if $key {
+		$value: #{map-get($output, $key)};
+	} @else {
+		@warn 'no input given';
+	}
+	@return $value;
+}
+
+@mixin show-output($value: null) {
+	$show: show-output($value);
+}

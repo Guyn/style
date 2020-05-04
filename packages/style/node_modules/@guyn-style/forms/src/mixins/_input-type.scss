@@ -1,0 +1,10 @@
+
+
+@mixin input-type($type) {
+	input {
+		#{input-list($type)} {
+			@content;
+		}
+	}
+}
+

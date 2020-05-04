@@ -1,0 +1,15 @@
+
+@function input-list($type) {
+	$i: 0;
+	$list: "";
+	@each $input in $input-types {
+		@if nth($input, 2) == $type {
+			$i: $i + 1;
+			@if $i>1 {
+				$list: $list + ",";
+			}
+			$list: $list + '&[type="#{nth($input,1)}"]';
+		}
+	}
+	@return $list;
+}

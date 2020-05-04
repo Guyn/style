@@ -1,0 +1,19 @@
+@mixin pattern-checkered {
+	background-image: linear-gradient(
+			45deg,
+			#{$pattern-color-primary} 25%,
+			transparent 25%
+		),
+		linear-gradient(-45deg, #{$pattern-color-primary} 25%, transparent 25%),
+		linear-gradient(45deg, transparent 75%, #{$pattern-color-primary} 75%),
+		linear-gradient(
+			-45deg,
+			#{$pattern-color-secondary} 75%,
+			#{$pattern-color-primary} 75%
+		);
+	background-position: 0 0, 0 calc(#{$pattern-size} * 2),
+		calc(#{$pattern-size} * 2) calc((#{$pattern-size} * 2) * -1),
+		calc((#{$pattern-size} * 2) * -1) 0px;
+
+	background-size: calc(#{$pattern-size} * 4) calc(#{$pattern-size} * 4);
+}
