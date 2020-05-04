@@ -1,6 +1,6 @@
 {
 	"name": "@guyn-style/color",
-	"version": "1.0.0",
+	"version": "0.1.0-alpha.0",
 	"description": "Guyn Style Color Module",
 	"main": "index.scss",
 	"scripts": {
