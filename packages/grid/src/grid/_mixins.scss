@@ -1,0 +1,276 @@
+// Default use:
+//  @include min-(width,4,240);
+
+//  use width calculation
+//  @include min-(width,4,240,'calc(100% - 240px)');
+
+@mixin min-($args...) {
+	@include min-max($args, "min") {
+		@content;
+	}
+}
+
+// Default use:
+//  @include max-(width,4,480);
+
+//  use width calculation
+//  @include max-(width,4,480,'calc(100% - 480px)');
+//
+
+@mixin max-($args...) {
+	@include min-max($args, "max") {
+		@content;
+	}
+}
+
+//
+// Logic for the min and max functions
+//
+
+@mixin min-max($args, $minmax) {
+	$property: null;
+	$columns: null;
+	$width: null;
+	$mq: null;
+	$alt: false;
+	@if type-of(nth($args, 1)) == "string" {
+		@if length($args) < 3 {
+			@debug "[(optional) selector, $columns, $width (unitless/px/rem)]";
+		}
+		$property: nth($args, 1);
+		$columns: nth($args, 2);
+		$width: nth($args, 3);
+		@if length($args) > 3 {
+			$alt: nth($args, 4);
+		}
+	} @else {
+		@if length($args) < 2 {
+			@debug "[(optional) selector, $columns, $width (unitless/px/rem)]";
+		}
+		$columns: nth($args, 1);
+		$width: nth($args, 2);
+		@if length($args) > 2 {
+			$alt: nth($args, 3);
+		}
+	}
+
+	@if $minmax == "max" {
+		$mq: grid-mq-max($columns, $width);
+	} @else if $minmax == "min" {
+		$mq: grid-mq-min($columns, $width);
+	}
+
+	@media #{$mq} {
+		@if $property != null {
+			@if $alt != false {
+				#{$property}: $alt;
+			} @else {
+				#{$property}: #{to-px(strip-unit(to-px($width)))};
+			}
+		}
+		@content;
+	}
+}
+
+//
+// A mixin to create all the classes for columns
+//
+@mixin createGridClasses($child: false) {
+	//
+	// The childclasses make it possible to create classes for
+	// the row which the columns will respond to. Default the
+	// mixins doesnt create child classes. But when true, the columns will
+	// be made in the classes.
+	//
+	$childClass: "";
+	@if $child == true {
+		$childClass: "> .#{$base-prefix-grid}column";
+	}
+	//
+	// Create the default classes for widths without any media query
+	//
+	@if output("grid-no-mq-classes") {
+		@for $a from 0 through $grid-columns {
+			$percentage: percentage($a/$grid-columns); //
+			$column: #{$a}#{$childClass};
+			@if output(grid-column) {
+				&.#{$base-prefix-grid}column-#{$column} {
+					width: #{$percentage};
+					@if output(grid-cssgrid) {
+						@supports (display: grid) {
+							width: #{$a}fr;
+						}
+					}
+				}
+			}
+			@if output(grid-offset) {
+				&.#{$base-prefix-grid}offset-#{$column} {
+					margin-left: #{$percentage};
+				}
+			}
+			@if output(grid-push) {
+				&.#{$base-prefix-grid}push-#{$column} {
+					margin-right: #{$percentage};
+				}
+			}
+			@if output(grid-pull) {
+				&.#{$base-prefix-grid}pull-#{$column} {
+					margin-left: -#{$percentage};
+				}
+			}
+		}
+	}
+
+	//
+	// Create the list with
+	//
+
+	$min-width: 0;
+	@each $bp-name, $bp-value in $grid-breakpoints {
+		$mq-only: "#{$grid-screen} and (min-width: #{$min-width}px) and (max-width: #{$bp-value}px)";
+		$mq: "#{$grid-screen} and (min-width: #{$min-width}px)";
+		$min-width: $bp-value + 1;
+		//
+		// The partials make it easier to use in the system. Create a
+		// class small-half and always create a column which is half the
+		// size of its parent. Also when you alter the amount of columns
+		//
+		@if output("grid-parts") {
+			@each $part, $percentage in $grid-parts {
+				&%#{$part}#{$childClass},
+				&.#{$base-prefix-grid}#{$part}#{$childClass} {
+					width: percentage($percentage);
+					@if $grid-cssgrid == true {
+						@supports (display: grid) {
+							$parts: $percentage * $grid-columns;
+							width: #{$parts}fr;
+						}
+					}
+				}
+			}
+		}
+		//
+		// Grid only classes make it possible to create a specific size
+		// for a specific breakpoint.
+		//
+		@if output("grid-only-classes") {
+			@media #{$mq-only} {
+				&.#{$base-prefix-grid}#{$bp-name}-only-0#{$childClass} {
+					display: none;
+					width: 0;
+				}
+				@each $part, $percentage in $grid-parts {
+					.#{$bp-name}-only-#{$part}#{$childClass},
+					&.#{$base-prefix-grid}#{$bp-name}-only-#{$part}#{$childClass} {
+						width: percentage($percentage);
+					}
+				}
+			}
+			@for $a from 1 through $grid-columns {
+				$percentage: percentage($a/$grid-columns);
+				&.#{$base-prefix-grid}#{$bp-name}-only-#{$a}#{$childClass} {
+					width: $percentage;
+				}
+
+				@if output(grid-offset) {
+					&.#{$base-prefix-grid}offset-#{$bp-name}-only-#{$a}#{$childClass} {
+						margin-left: $percentage;
+					}
+				}
+				@if output(grid-push) {
+					&.#{$base-prefix-grid}push-#{$bp-name}-only-#{$a}#{$childClass} {
+						margin-right: $percentage;
+					}
+				}
+				@if output(grid-pull) {
+					&.#{$base-prefix-grid}pull-#{$bp-name}-only-#{$a}#{$childClass} {
+						margin-left: -#{$percentage};
+					}
+				}
+			}
+		}
+		@if output("grid-mq-#{$bp-name}") {
+			@media #{$mq} {
+				//
+				// Sometimes you need a zero, which does the same as a hide for a breakpoint.
+				//
+				.#{$bp-name}-0#{$childClass}
+					&.#{$base-prefix-grid}#{$bp-name}-0#{$childClass} {
+					display: none;
+					width: 0;
+				}
+				//
+				// Create columns with parts with breakpoints
+				//
+				@if output("grid-parts") {
+					@each $part, $percentage in $grid-parts {
+						%#{$bp-name}-#{$part}#{$childClass},
+						&.#{$base-prefix-grid}#{$bp-name}-#{$part}#{$childClass} {
+							width: percentage($percentage);
+
+							@if $grid-cssgrid == true {
+								@supports (display: grid) {
+									$parts: $percentage * $grid-columns;
+									width: #{$parts}fr;
+								}
+							}
+						}
+					}
+				}
+				//
+				// Create columns with amount of columns with breakpoints
+				//
+				@if output(("grid-columns", "grid-counted-columns")) {
+					@for $a from 1 through $grid-columns {
+						$percentage: percentage($a/$grid-columns);
+
+						&.#{$base-prefix-grid}#{$bp-name}-#{$a}#{$childClass} {
+							width: $percentage;
+							@if $grid-cssgrid == true {
+								@supports (display: grid) {
+									$parts: ($a/$grid-columns) * $grid-columns; //
+									width: auto;
+									grid-column: #{$parts} span;
+								}
+							}
+						}
+						@if output(grid-offset) {
+							&.#{$base-prefix-grid}offset-#{$bp-name}-#{$a}#{$childClass} {
+								margin-left: $percentage;
+							}
+						}
+						@if output(grid-push) {
+							&.#{$base-prefix-grid}push-#{$bp-name}-#{$a}#{$childClass} {
+								margin-right: $percentage;
+							}
+						}
+						@if output(grid-pull) {
+							&.#{$base-prefix-grid}pull-#{$bp-name}-#{$a}#{$childClass} {
+								margin-left: -#{$percentage};
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// Mixin to automatically set a max and min width of a grid value.
+// Use as @include grid([property],[grid-size];
+// When a grid-min size and a grid-max size are defined, as a overal setting or in the include like:
+// @include grid([property], [grid-size], [min-size], [max-size]);
+@mixin grid(
+	$property,
+	$grid,
+	$min: setting("grid-min"),
+	$max: setting("grid-max")
+) {
+	#{$property}: grid($grid);
+	@if $max > 0 {
+		@include max-($property, $grid, $max * $grid);
+	}
+	@if $min > 0 {
+		@include min-($property, $grid, $min * $grid);
+	}
+}

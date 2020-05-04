@@ -1,0 +1,34 @@
+@import "../node_modules/ssst/index.scss";
+@import "../index.local";
+
+// Test google font
+
+@include test(
+	"get-google-font() function",
+	"Return the import url to import fonts from Google"
+) {
+	@include is-equal(
+		get-google-font("Noto Serif"),
+		"https://fonts.googleapis.com/css?family=Noto+Serif"
+	);
+}
+@include test(
+	"get-google-font() function",
+	"Return the import url to import fonts from Google with weights"
+) {
+	@include is-equal(
+		get-google-font("Noto Serif", 500 600 700),
+		"https://fonts.googleapis.com/css?family=Noto+Serif:500,600,700"
+	);
+}
+
+// Utils
+@include test(
+	"letter-spacing() function",
+	"Convert the value to a letter spacing based on how photoshop does the letter spacing."
+) {
+	@include is-equal(letter-spacing(-5), -0.005em);
+}
+
+// Test Mixins
+@import "mixins";

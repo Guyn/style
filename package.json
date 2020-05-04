@@ -1,0 +1,28 @@
+{
+	"name": "guyn-style",
+	"version": "1.0.0",
+	"description": "Guyn Sass Toolset",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm run test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Guyn/style.git"
+	},
+	"keywords": [
+		"Sass",
+		"Toolset"
+	],
+	"author": "Sil van Diepen",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Guyn/style/issues"
+	},
+	"homepage": "https://github.com/Guyn/style#readme",
+	"devDependencies": {
+		"lerna": "^3.19.0",
+		"node-sass": "^4.14.0",
+		"sass": "^1.26.5"
+	}
+}

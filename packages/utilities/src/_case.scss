@@ -1,0 +1,80 @@
+@charset 'utf-8';
+// PascalCase function
+// --------------------------
+/// convert any string to PascalCase
+/// @access public
+/// @group case utilities
+///
+/// @parameter String
+///
+/// @output String
+
+@function PascalCase($str) {
+	$new-str: allowed-characters(
+		to-lower-case(safe-characters($str)),
+		("a-Z", "0-9", " ")
+	);
+	$temp-list: str-splice($new-str, " ");
+	$return-str: ();
+	@for $i from 1 through length($temp-list) {
+		$return-str: append($return-str, letter-uppercase(nth($temp-list, $i)));
+	}
+	@return trim(list-to-str($return-str, null));
+}
+
+// camelCase function
+// --------------------------
+/// convert any string to camelCase
+/// @access public
+/// @group case utilities
+///
+/// @parameter String
+///
+/// @output String
+@function camelCase($str) {
+	$str: PascalCase($str);
+	@return letter-lowercase($str);
+}
+
+// Trim function
+// --------------------------
+/// Trim a string
+/// @access public
+/// @group case utilities
+///
+/// @parameter String
+/// @output String
+///
+
+@function trim($str) {
+	@if str-slice($str, 1, 1) == "" {
+		@debug "there is a empty thingy here";
+	}
+	@if str-slice($str, 1, 1) == " " {
+		@return trim(str-slice($str, 2, str-length($str)));
+	} @else if str-slice($str, str-length($str), str-length($str)) == " " {
+		@return trim(str-slice($str, 1, str-length($str) - 1));
+	} @else {
+		@return $str;
+	}
+}
+
+/// Kebab Case function
+// --------------------------
+/// Convert any string into a kebabcase type.
+///
+/// @access public
+/// @group case utilities
+///
+/// @param {string} $string
+///
+/// @return {string}
+///
+@function kebabCase($str) {
+	$new-str: allowed-characters(
+		to-lower-case(safe-characters($str)),
+		("a-Z", "0-9", " ")
+	);
+
+	@return str-replace($new-str, " ", "-");
+}

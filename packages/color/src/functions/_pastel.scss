@@ -1,0 +1,6 @@
+@function pastel($color) {
+	@if type-of($color) == 'string' {
+		$color: color($color);
+	}
+	@return rgb((red($color) + 100), (green($color) + 100), (blue($color) + 100));
+}

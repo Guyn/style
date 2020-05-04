@@ -1,0 +1,11 @@
+{
+	"name": "@guyn-style/math",
+	"version": "1.0.0",
+	"description": "Guyn Style Math Module",
+	"main": "src/index.scss",
+	"scripts": {
+		"test": "sass test/index.scss"
+	},
+	"author": "Sil van Diepen",
+	"license": "MIT"
+}

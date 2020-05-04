@@ -1,0 +1,11 @@
+{
+	"name": "@guyn-style/output",
+	"version": "1.0.0",
+	"description": "Guyn Style Output Module",
+	"main": "index.scss",
+	"scripts": {
+		"test": "sass test/index.scss"
+	},
+	"author": "Sil van Diepen",
+	"license": "MIT"
+}

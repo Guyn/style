@@ -1,0 +1,124 @@
+%#{$base-prefix}h1 {
+	@if $typography-h1-font-family != $typography-fonts-system {
+		font-family: $typography-h1-font-family;
+	}
+	font-weight: $typography-h1-font-weight;
+	font-size: grid($typography-h1-font-size-value);
+	line-height: $typography-h1-line-height;
+	letter-spacing: $typography-h1-letter-spacing;
+	text-transform: $typography-h1-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h1-font-size-value,
+		$typography-h1-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h1-font-size-value,
+		$typography-h1-font-size-max
+	);
+}
+
+%#{$base-prefix}h2 {
+	@if $typography-h2-font-family != $typography-fonts-system {
+		font-family: $typography-h2-font-family;
+	}
+	font-weight: $typography-h2-font-weight;
+	font-size: grid($typography-h2-font-size-value);
+	line-height: $typography-h2-line-height;
+	letter-spacing: $typography-h2-letter-spacing;
+	text-transform: $typography-h2-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h2-font-size-value,
+		$typography-h2-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h2-font-size-value,
+		$typography-h2-font-size-max
+	);
+}
+
+%#{$base-prefix}h3 {
+	@if $typography-h3-font-family != $typography-fonts-system {
+		font-family: $typography-h3-font-family;
+	}
+	font-weight: $typography-h3-font-weight;
+	font-size: grid($typography-h3-font-size-value);
+	line-height: $typography-h3-line-height;
+	letter-spacing: $typography-h3-letter-spacing;
+	text-transform: $typography-h3-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h3-font-size-value,
+		$typography-h3-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h3-font-size-value,
+		$typography-h3-font-size-max
+	);
+}
+
+%#{$base-prefix}h4 {
+	@if $typography-h4-font-family != $typography-fonts-system {
+		font-family: $typography-h4-font-family;
+	}
+	font-weight: $typography-h4-font-weight;
+	font-size: grid($typography-h4-font-size-value);
+	line-height: $typography-h4-line-height;
+	letter-spacing: $typography-h4-letter-spacing;
+	text-transform: $typography-h4-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h4-font-size-value,
+		$typography-h4-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h4-font-size-value,
+		$typography-h4-font-size-max
+	);
+}
+
+%#{$base-prefix}h5 {
+	@if $typography-h5-font-family != $typography-fonts-system {
+		font-family: $typography-h5-font-family;
+	}
+	font-weight: $typography-h5-font-weight;
+	font-size: grid($typography-h5-font-size-value);
+	line-height: $typography-h5-line-height;
+	letter-spacing: $typography-h5-letter-spacing;
+	text-transform: $typography-h5-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h5-font-size-value,
+		$typography-h5-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h5-font-size-value,
+		$typography-h5-font-size-max
+	);
+}
+%#{$base-prefix}h6 {
+	@if $typography-h6-font-family != $typography-fonts-system {
+		font-family: $typography-h6-font-family;
+	}
+	font-weight: $typography-h6-font-weight;
+	font-size: grid($typography-h6-font-size-value);
+	line-height: $typography-h6-line-height;
+	letter-spacing: $typography-h6-letter-spacing;
+	text-transform: $typography-h6-text-transform;
+	@include min-(
+		'font-size',
+		$typography-h6-font-size-value,
+		$typography-h6-font-size-min
+	);
+	@include min-(
+		'font-size',
+		$typography-h6-font-size-value,
+		$typography-h6-font-size-max
+	);
+}

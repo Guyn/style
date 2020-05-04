@@ -1,0 +1,124 @@
+//
+// Get a breakpoint from the settings	*/
+//
+
+@function bp($bp) {
+	$breakpoint: map-get($grid-breakpoints, $bp);
+	@return $breakpoint;
+}
+
+//
+// Create a viewport width size based on columns
+//
+// When using multiple values, all values will be
+// calculated
+//
+
+@function grid($value) {
+	$values: null;
+	@if length($value) > 1 {
+		@each $size in $value {
+			$v: calc-grid($size);
+			$values: $values #{$v};
+		}
+	} @else {
+		$values: calc-grid($value);
+	}
+	@return $values;
+}
+
+//
+// Create a viewport width size based on columns
+//
+// Same as the function above, only will return a
+// negative value.
+//
+
+@function -grid($value) {
+	$values: null;
+	@if length($value) > 1 {
+		@each $size in $value {
+			$v: calc-grid($size);
+			$values: $values -#{$v};
+		}
+	} @else {
+		$values: -#{calc-grid($value)};
+	}
+	@return $values;
+}
+
+// -
+// Calculate the viewport width based on columns
+//
+
+@function calc-grid($v) {
+	$value: (100 / $grid-columns) * $v;
+	//convert px to vw based on design file
+	@if unit($v) == "px" {
+		$value: (strip-unit($v) * 100) / strip-unit($grid-design-width);
+	}
+	//convert rem to vw based on design file
+	@if unit($v) == "rem" {
+		$value: ((strip-unit($v) * $base-font-size) * 100) /
+			strip-unit($grid-design-width);
+	}
+	@return unquote("#{$value}vw");
+}
+
+//
+// Return a media query with min and max values
+//
+
+@function mq($min: 0, $max: 0) {
+	@if $min == null and $max > 0 {
+		@return "only screen and (max-width: #{strip-unit($max)}px)";
+	} @else if $max > 0 {
+		@return "only screen and (min-width: #{strip-unit($min)}px) and (max-width: #{strip-unit($max)}px)";
+	} @else if $min > 0 {
+		@return "only screen and (min-width: #{strip-unit($min)}px)";
+	}
+}
+
+//
+// Cleanup units for calculation,
+// convert Rem to pixels and make them unitless.
+//
+
+@function grid-clean-width($width) {
+	@if unit($width) == "px" {
+		$width: strip-unit($width);
+	} @else if unit($width) == "rem" {
+		$width: strip-unit($width) * $base-font-size;
+	}
+	@return $width;
+}
+@function grid-clean-columns($columns) {
+	@if unit($columns) == "rem" {
+		@error "please just use Grid units!"; //
+	}
+	@return $columns;
+}
+
+//
+// Calculate the minimum breakpoint for a value to be
+// at a specified amount of pixels.
+//
+
+@function grid-mq-min($columns, $width) {
+	$columns: grid-clean-columns($columns);
+	$width: grid-clean-width($width);
+
+	@return mq(null, ($width/ $columns) * $grid-columns);
+}
+
+//
+// Calculate the maximum breakpoint for a value to be
+// at a specified amount of pixels.
+//
+
+@function grid-mq-max($columns, $width) {
+	$columns: grid-clean-columns($columns);
+	$width: grid-clean-width($width);
+
+	@return mq(($width/ $columns) * $grid-columns);
+}

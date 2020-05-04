@@ -1,0 +1,48 @@
+$testString: "The quïck brøwn föx jumps over thé l4zy d0g";
+
+@include test("str-replace() function", "Replace a letter in a string") {
+	@include is-equal(
+		str-replace($testString, "ï", "i"),
+		"The quick brøwn föx jumps over thé l4zy d0g"
+	);
+}
+@include test(
+	"str-replace() function",
+	"Replace multiple letters in a string with one value"
+) {
+	@include is-equal(
+		str-replace($testString, "r", "R"),
+		"The quïck bRøwn föx jumps oveR thé l4zy d0g"
+	);
+}
+@include test(
+	"str-replace() function",
+	"Replace a set of letters in a string with a value"
+) {
+	@include is-equal(
+		str-replace($testString, ("ï", "ø"), ("i", "o")),
+		"The quick brown föx jumps over thé l4zy d0g"
+	);
+}
+@include test(
+	"str-replace() function",
+	"Replace a set of letters in a string with one value (as a list)"
+) {
+	@include is-equal(
+		str-replace($testString, ("ï", "ø"), ("I")),
+		"The quIck brIwn föx jumps over thé l4zy d0g"
+	);
+}
+@include test(
+	"str-replace() function",
+	"Replace a set of letters in a string with one value (as a string)"
+) {
+	@include is-equal(
+		str-replace($testString, ("ï", "ø"), "I"),
+		"The quIck brIwn föx jumps over thé l4zy d0g"
+	);
+}
+
+@include test("add-zeros() function", "Add extra zeros to a character") {
+	@include is-equal(add-zeros(1, 5), "00001");
+}

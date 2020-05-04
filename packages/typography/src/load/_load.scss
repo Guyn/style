@@ -1,0 +1,185 @@
+//Make sure the variable exists. Can be overruled from anywhere.
+$base-font-path: "" !default;
+
+@mixin font-include(
+	$name: null,
+	$file: null,
+	$weight: normal,
+	$type: normal,
+	$files: (
+		"eot",
+		"woff",
+		"svg",
+		"ttf"
+	),
+	$path: $base-font-path,
+	$display: "swap",
+	$italic: "Italic"
+) {
+	$src: ();
+	$fileName: if($path, fs-join($path, $file), fs-join($file));
+
+	@if list-contains($files, "woff2") {
+		$value: "url('#{$fileName}.woff2') format('woff2')";
+		$src: append($src, $value);
+	}
+	@if list-contains($files, "woff") {
+		$value: "url('#{$fileName}.woff') format('woff')";
+		$src: append($src, $value);
+	}
+	@if list-contains($files, "eot") {
+		$value: "url('#{$fileName}.eot?#iefix') format('embedded-opentype')";
+		$src: append($src, $value);
+	}
+	@if list-contains($files, "ttf") {
+		$value: "url('#{$fileName}.ttf') format('truetype')";
+		$src: append($src, $value);
+	}
+	@if list-contains($files, "otf") {
+		$value: "url('#{$fileName}.otf') format('otf')";
+		$src: append($src, $value);
+	}
+	@if list-contains($files, "svg") {
+		$value: "url('#{$fileName}.svg##{$name}') format('svg')";
+		$src: append($src, $value);
+	}
+
+	// Create the font-face
+	@font-face {
+		@if (str-index($name, " ")) {
+			$name: "#{$name}";
+		}
+		src: to-string($src, ",");
+		font-weight: $weight;
+		font-family: $name;
+		font-style: unquote($type);
+		@if $display {
+			font-display: $display;
+		}
+	}
+}
+
+@mixin font-list(
+	$title: null,
+	$name: null,
+	$weights: (
+		400
+	),
+	$types: (
+		"normal"
+	),
+	$files: (
+		"eot",
+		"woff",
+		"svg",
+		"ttf"
+	),
+	$path: $base-font-path,
+	$display: "swap",
+	$italic: "Italic"
+) {
+	@each $type in $types {
+		$italic: "";
+		@if $type == "italic" {
+			$italic: "Italic";
+		}
+		@for $i from 1 through length($weights) {
+			$weight: nth($weights, $i);
+
+			@include font-include(
+				$name: font-quotes($title),
+				$file: unquote("#{$name}-#{nth($weight, 1)}#{$italic}"),
+				$weight: nth($weight, 2),
+				$type: $type,
+				$files: $files,
+				$path: $path,
+				$display: $display
+			);
+		}
+	}
+}
+
+//
+// Check the font and load them.
+@mixin font-load($font) {
+	//
+	// Define scoped variables
+	$load: false;
+	$font-name: "";
+	$font-types: ("normal") !default;
+	$font-path: $base-font-path !default;
+	$font-files: ("eot", "woff", "svg", "ttf");
+	$family: "";
+
+	//
+	// Check if the variable is a map
+	// if it's not a map, its not a font to include.
+	@if type-of($font) == "map" {
+		//
+		// Check if the include has a files prop;
+		@if map-has-key($font, "files") {
+			$font-files: map-get($font, "files");
+		}
+		//
+		// Check if the include has a font-family;
+		@if map-has-key($font, "font-family") == false {
+			@warn "Your included font doesn't have a specified 'font-family'";
+		} @else {
+			//
+			// Check if the font if it needs to load, has weights to include.
+			@if map-has-key($font, "load") {
+				@if map-get($font, "load") == true {
+					@if map-has-key($font, "weights") == false {
+						@warn "You are trying to include a font without weights, please specify the weights to load.";
+					} @else if length(map-get($font, "load")) < 1 {
+						@warn "You are trying to include a font without weights, please specify the weights to load.";
+					} @else {
+						$load: true;
+					}
+				}
+			}
+			// Check if a font path has been set, if so, override the default;
+			@if map-has-key($font, "path") {
+				$font-path: map-get($font, "path");
+			}
+			// Check if a font path has been set, if so, override the default;
+			@if map-has-key($font, "types") {
+				$font-types: map-get($font, "types");
+			}
+			// Check if a font files have been set
+			@if map-has-key($font, "files") {
+				$font-files: map-get($font, "files");
+			}
+			// Get the font name
+			$font-name: convertToFontname($font, true);
+
+			// Load the fonts if true
+			@if $load {
+				@include font-list(
+					convertToFontname($font),
+					convertToFontname($font, true),
+					map-get($font, weights),
+					$font-types,
+					$font-files,
+					$font-path
+				);
+			}
+
+			// Set use
+			@if map-has-key($font, "use") {
+				@include font-use(map-get($font, "use"), map-get($font, "font-family"));
+			}
+			$weight-classes: false;
+			@if map-has-key($font, "weight-classes") {
+				$weight-classes: map-get($font, "weight-classes");
+			}
+			@if output("typography-weight-classes", $weight-classes) {
+				@each $weight-name, $weight-value in map-get($font, weights) {
+					.font-#{to-lower-case($weight-name)} {
+						font-weight: $weight-value;
+					}
+				}
+			}
+		}
+	}
+}

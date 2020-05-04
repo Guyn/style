@@ -1,0 +1,15 @@
+// Typography
+@import 'utils/functions';
+@import 'utils/google';
+@import 'load/load';
+@import 'load/variable-load';
+@import 'load/usage';
+@import 'style/index';
+
+// Load all fonts
+@include font-load($font-primary);
+@include font-load($font-secondary);
+@include font-load($font-tertiary);
+@include font-load($font-quaternary);
+
+@include font-variable-load($font-variable);

@@ -1,0 +1,97 @@
+@if output(grid-flex) {
+	.#{$base-prefix-grid}flex-row {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		width: 100%;
+		max-width: #{$grid-row-width}px;
+		margin: auto;
+		@include createGridClasses(true);
+
+		&.#{$base-prefix-grid}center {
+			justify-content: center;
+			justify-items: center;
+
+			@if $grid-cssgrid {
+				> .#{$base-prefix-grid}column {
+					align-self: center;
+					justify-self: center;
+				}
+			}
+		}
+		&.#{$base-prefix-grid}right {
+			justify-content: flex-end;
+			justify-items: right;
+
+			@if $grid-cssgrid {
+				> .#{$base-prefix-grid}column {
+					align-self: right;
+					justify-self: right;
+				}
+			}
+		}
+		@each $grid-name, $grid-value in $grid-breakpoints {
+			&.#{$base-prefix-grid}#{$grid-name}-reverse {
+				$mq: media-query(#{$grid-name}-up);
+				@media #{$mq} {
+					flex-direction: row-reverse;
+				}
+			}
+		}
+	}
+	.#{$base-prefix-grid}column {
+		@include createGridClasses(false);
+	}
+}
+@if output(grid) {
+	.#{$base-prefix-grid}row {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: flex-start;
+		width: 100%;
+		max-width: #{$grid-row-width}px;
+		margin: auto;
+		@include createGridClasses(true);
+
+		@if $grid-cssgrid {
+			@supports (display: grid) {
+				display: grid; //
+				grid-gap: 0rem; //
+				grid-template-columns: repeat($grid-columns, 1fr); //
+			}
+		}
+		&.#{$base-prefix-grid}center {
+			justify-content: center;
+			justify-items: center;
+
+			@if $grid-cssgrid {
+				> .#{$base-prefix-grid}column {
+					align-self: center;
+					justify-self: center;
+				}
+			}
+		}
+		&.#{$base-prefix-grid}right {
+			justify-content: flex-end;
+			justify-items: right;
+
+			@if $grid-cssgrid {
+				> .#{$base-prefix-grid}column {
+					align-self: right;
+					justify-self: right;
+				}
+			}
+		}
+		@each $grid-name, $grid-value in $grid-breakpoints {
+			&.#{$base-prefix-grid}#{$grid-name}-reverse {
+				$mq: media-query(#{$grid-name}-up);
+				@media #{$mq} {
+					flex-direction: row-reverse;
+				}
+			}
+		}
+	}
+	.#{$base-prefix-grid}column {
+		@include createGridClasses(false);
+	}
+}

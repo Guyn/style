@@ -1,0 +1,26 @@
+@function get-google-font($font-name, $font-weights: null, $languages: null) {
+	// Create the link
+	$google-url: 'https://fonts.googleapis.com/css?family=';
+	$embed-url: '#{$google-url}#{str-replace($font-name, ' ', '+')}';
+
+	// Set the font weights
+	@if $font-weights {
+		$weights: $font-weights;
+		@if type-of($weights) == 'list'{
+			$weights: list-to-str($weights,',');
+		}
+		$embed-url: unquote('#{unquote($embed-url)}:#{$weights}');
+	}
+
+	// Set optional languages.
+	@if $languages {
+		$embed-url: $embed-url + '&subset=' + $languages;
+	}
+
+	@return $embed-url;
+}
+
+// The mixin to import directly.
+@mixin import-google-font($font-name, $font-weights: null, $languages: null) {
+	@import url(get-google-font($font-name, $font-weights, $languages));
+}

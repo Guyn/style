@@ -1,0 +1,20 @@
+//
+// Define where to use the font directly from the embed
+//
+@mixin font-use($use, $family) {
+	@if output(typography-usage) {
+		@if (type-of($use) == "list") {
+			$selectors: ();
+			@each $selector in $use {
+				$selectors: append($selectors, $selector);
+			}
+			#{to-string($selectors, ",")} {
+				font-family: #{font-quotes($family)};
+			}
+		} @else {
+			#{$use} {
+				font-family: #{font-quotes($family)};
+			}
+		}
+	}
+}

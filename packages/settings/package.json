@@ -1,0 +1,11 @@
+{
+	"name": "@guyn-style/settings",
+	"version": "1.0.0",
+	"description": "Guyn Style Settings Module",
+	"main": "index.scss",
+	"scripts": {
+		"test": "sass test/index.scss"
+	},
+	"author": "Sil van Diepen",
+	"license": "MIT"
+}

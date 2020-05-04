@@ -1,0 +1,55 @@
+$testString: "The quïck brøwn föx jumps over thé l4zy d0g";
+
+@include test(
+	1,
+	"PascalCase() function",
+	"Convert a string to a PascalCase string"
+) {
+	@include is-equal(
+		PascalCase($testString),
+		"TheQuickBrownFoxJumpsOverTheL4zyD0g"
+	);
+}
+
+@include test(
+	2,
+	"dasherize() function",
+	"Convert a string to a dashed (slug) string"
+) {
+	@include is-equal(
+		dasherize($testString),
+		"the-quick-brown-fox-jumps-over-the-l4zy-d0g"
+	);
+}
+@include test(
+	3,
+	"camelCase() function",
+	"Convert a string to a PascalCase string"
+) {
+	@include is-equal(
+		camelCase($testString),
+		"theQuickBrownFoxJumpsOverTheL4zyD0g"
+	);
+}
+
+@include test(
+	4,
+	"kebabCase() function",
+	"Convert a string to a kebabCase string"
+) {
+	@include is-equal(
+		kebabCase($testString),
+		"the-quick-brown-fox-jumps-over-the-l4zy-d0g"
+	);
+}
+
+@include test(
+	5,
+	"underscore() function",
+	"Convert a string to a underscored (slug) string"
+) {
+	@include is-equal(
+		underscore($testString),
+		"the_quick_brown_fox_jumps_over_the_l4zy_d0g"
+	);
+}

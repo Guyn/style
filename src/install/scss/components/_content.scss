@@ -1,0 +1,4 @@
+.content {
+	padding: grid(1);
+	@include min-(padding, 1, $mobile-padding);
+}

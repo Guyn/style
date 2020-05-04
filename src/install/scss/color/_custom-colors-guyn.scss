@@ -1,0 +1,5 @@
+@import '~guyn';
+
+$custom-colors: $guyn-colors;
+
+$custom-colors: add-color($custom-colors,'Blue', #2100FF);

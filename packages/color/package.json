@@ -1,0 +1,11 @@
+{
+	"name": "@guyn-style/color",
+	"version": "1.0.0",
+	"description": "Guyn Style Color Module",
+	"main": "index.scss",
+	"scripts": {
+		"test": "sass test/index.scss"
+	},
+	"author": "Sil van Diepen",
+	"license": "MIT"
+}
