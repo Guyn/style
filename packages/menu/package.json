@@ -1,6 +1,6 @@
 {
 	"name": "@guyn-style/menu",
-	"version": "0.1.0-alpha.1",
+	"version": "0.1.0-alpha.2",
 	"description": "Guyn Style Menu Module",
 	"main": "index.scss",
 	"scripts": {
