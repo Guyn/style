@@ -3,10 +3,11 @@
 	"version": "0.1.0-alpha.5",
 	"description": "Guyn Style Grid Module",
 	"main": "index.scss",
+	"private": false,
 	"scripts": {
 		"test": "sass test/index.scss"
 	},
 	"author": "Sil van Diepen",
 	"license": "MIT",
-	"gitHead": "c53e6979f7bea9478ea4ea482d6459dc42f0cff9"
+	"gitHead": "d67354001ed4e97c84542fae50b89c9eb7002c65"
 }
