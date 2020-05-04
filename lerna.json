@@ -1,6 +1,8 @@
 {
-	"packages": ["packages/*"],
-	"version": "0.1.0-alpha.2",
+	"packages": [
+		"packages/*"
+	],
+	"version": "0.1.0-alpha.3",
 	"command": {
 		"publish": {
 			"registry": "https://npm.pkg.github.com"

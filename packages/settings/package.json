@@ -1,6 +1,6 @@
 {
 	"name": "@guyn-style/settings",
-	"version": "0.1.0-alpha.2",
+	"version": "0.1.0-alpha.3",
 	"description": "Guyn Style Settings Module",
 	"main": "index.scss",
 	"scripts": {
