@@ -1,53 +1,44 @@
-@import '../node_modules/ssst/index.scss';
-@import '../index.local';
-@import '../node_modules/@henris/utils/index.scss';
+@import "../node_modules/ssst/index.scss";
+@import "../index.local";
+@import "../node_modules/@guyn-style/utils/index.scss";
 
 // Test the default easing set:
-@include test(
-	'ease() function',
-	'Return an default easing'
-) {
+@include test("ease() function", "Return an default easing") {
 	@include is-equal(ease(linear), cubic-bezier(0.25, 0.25, 0.75, 0.75));
 }
 
 // Test an added custom easing set:
 $custom-easing-set: (
-	"ease-header" : '1, 1, 1, 1',
-	"ease-footer" : '1, 0, 0, 1'
+	"ease-header": "1, 1, 1, 1",
+	"ease-footer": "1, 0, 0, 1",
 );
 $ease: add-easing-set($custom-easing-set);
-@include test(
-	'ease() function',
-	'Return a custom easing'
-) {
+@include test("ease() function", "Return a custom easing") {
 	// @debug $ease;
-	@include is-equal(
-		ease(ease-header),
-		'cubic-bezier(1, 1, 1, 1)'
-	);
+	@include is-equal(ease(ease-header), "cubic-bezier(1, 1, 1, 1)");
 }
 
 /**
 /// Css ouput test
 **/
 // default easing
-.element{
+.element {
 	transition: 1s ease(linear);
 }
 // custom easing
-.element{
+.element {
 	transition: 1s ease(ease-header);
 }
 // mixin single transition
-.element{
-	@include transition('transform', 500, 'ease-header');
+.element {
+	@include transition("transform", 500, "ease-header");
 }
 //mixin transition group
 $transitions: (
-  ('opacity', 500, 0, linear),
-  ('transform', 700, 0, ease),
-  ('width', 500, 0, easeInQuad),
+	("opacity", 500, 0, linear),
+	("transform", 700, 0, ease),
+	("width", 500, 0, easeInQuad)
 );
-.element{
+.element {
 	@include transition-group($transitions);
 }

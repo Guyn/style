@@ -1,95 +1,93 @@
 // Import Utils
-@import '../node_modules/@henris/default/index.scss';
-@import '../node_modules/@henris/utils/index.scss';
-@import '../src/functions/index.scss';
+@import "../node_modules/@guyn-style/default/index.scss";
+@import "../node_modules/@guyn-style/utils/index.scss";
+@import "../src/functions/index.scss";
 
 // Import Ssst test suite
-@import '../node_modules/ssst/index.scss';
+@import "../node_modules/ssst/index.scss";
 
 @include test(
-	'color() function',
-	'Return a color based on the variable given'
+	"color() function",
+	"Return a color based on the variable given"
 ) {
 	@include is-equal(color(Red), #eb0f33);
 }
 @include test(
-	'color() function',
-	'Return a color with opacity based on the variable given'
+	"color() function",
+	"Return a color with opacity based on the variable given"
 ) {
 	@include is-equal(color(Red, 0.5), rgba(235, 15, 51, 0.5));
 }
 @include test(
-	'color() function',
-	'Return a color with opacity based on the variable given'
+	"color() function",
+	"Return a color with opacity based on the variable given"
 ) {
 	@include is-equal(color(Red, 0.5), rgba(235, 15, 51, 0.5));
 }
 @include test(
-	'color() function',
-	'Return the value for Red, because FireRed doesnt exist'
+	"color() function",
+	"Return the value for Red, because FireRed doesnt exist"
 ) {
-	@include is-equal(#{color(FireRed)}, '#eb0f33');
+	@include is-equal(#{color(FireRed)}, "#eb0f33");
 }
 
 @include test(
-	'color() function',
-	'Return the value for Red, eventhough it has a underscore in the value'
+	"color() function",
+	"Return the value for Red, eventhough it has a underscore in the value"
 ) {
-	@include is-equal(#{color(_Red)}, '#eb0f33');
+	@include is-equal(#{color(_Red)}, "#eb0f33");
 }
 
 $test-color-set: (
-	'Red': red,
-	'Blue': blue
+	"Red": red,
+	"Blue": blue,
 );
-@include test('add-color() function', 'Check if the example set has 2 values') {
+@include test("add-color() function", "Check if the example set has 2 values") {
 	@include is-equal(length($test-color-set), 2);
 }
 
-$test-color-set-added-list: add-color(
-	$test-color-set,('Purple', purple)
-);
+$test-color-set-added-list: add-color($test-color-set, ("Purple", purple));
 @include test(
-	'add-color() function',
-	'Check if the example now has 3 values, color added by single argument list'
+	"add-color() function",
+	"Check if the example now has 3 values, color added by single argument list"
 ) {
 	@include is-equal(length($test-color-set-added-list), 3);
 }
 
 @include test(
-	'add-color() function',
-	'Test if the colorset now has the right purple color added - list'
+	"add-color() function",
+	"Test if the colorset now has the right purple color added - list"
 ) {
 	@include is-equal(color(Purple, 1, $test-color-set-added-list), purple);
 }
 
-$test-color-set-added-args: add-color($test-color-set, 'Purple', purple);
+$test-color-set-added-args: add-color($test-color-set, "Purple", purple);
 @include test(
-	'add-color() function',
-	'Check if the example now has 3 values, color added by multiple argument values'
+	"add-color() function",
+	"Check if the example now has 3 values, color added by multiple argument values"
 ) {
 	@include is-equal(length($test-color-set-added-args), 3);
 }
 
 @include test(
-	'add-color() function',
-	'Test if the colorset now has the right purple color added - args'
+	"add-color() function",
+	"Test if the colorset now has the right purple color added - args"
 ) {
 	@include is-equal(color(Purple, 1, $test-color-set-added-args), purple);
 }
 
-$test-color-set-overrule-blue: add-color($test-color-set, 'Blue', pink);
+$test-color-set-overrule-blue: add-color($test-color-set, "Blue", pink);
 
 @include test(
-	'add-color() function',
-	'Overrule the color blue in the set, length check'
+	"add-color() function",
+	"Overrule the color blue in the set, length check"
 ) {
 	@include is-equal(length($test-color-set-overrule-blue), 2);
 }
 
 @include test(
-	'add-color() function',
-	'Overrule the color blue in the set, color check'
+	"add-color() function",
+	"Overrule the color blue in the set, color check"
 ) {
 	@include is-equal(color(Blue, 1, $test-color-set-overrule-blue), pink);
 }

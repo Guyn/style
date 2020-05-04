@@ -1,10 +1,10 @@
 // Load custom-output & setting tools
-@import '~@henris/default';
-@import '~@henris/utils';
-@import '~@henris/custom';
+@import "~@guyn-style/default";
+@import "~@guyn-style/utils";
+@import "~@guyn-style/custom";
 
 // Add custom project colors
-@import '~assets/scss/color/index';
+@import "~assets/scss/color/index";
 
 // Define settings particular to project
 
@@ -12,11 +12,10 @@
 // $primary-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 
 // Override $base values:
-// $base-border-radius: 3px; 
+// $base-border-radius: 3px;
 // $base-transition-time: 0.3;
-// $base-transition: #{$base-transition-time}s; 
-// $base-cubic-bezier: ease-in-out; 
-
+// $base-transition: #{$base-transition-time}s;
+// $base-cubic-bezier: ease-in-out;
 
 // Mobile variables
 $mobile-padding: 2rem;
