@@ -1,0 +1,344 @@
+// Overall default styling.
+$input-form-shadow: var(--input-form-shadow, 0 0 1rem 0 rgba(0, 0, 0, 0));
+$input-form-shadow-focus: var(
+	--input-form-shadow-focus,
+	0 0 1rem 0 rgba(0, 0, 0, 0.05)
+);
+$input-form-transition: var(--input-form-transition, 0.3s ease-in-out);
+
+// Styling for the label
+$input-form-label-border-radius: var(--input-form-label-border-radius, 0px);
+$input-form-label-text-color: var(--input-form-label-text-color, currentColor);
+$input-form-label-line-height: var(--input-form-label-border-radius, 0px);
+$input-form-label-transition: var(
+	--input-form-label-transition,
+	#{$input-form-transition}
+);
+$input-form-label-padding: var(--input-form-label-padding, 1rem);
+
+// Styling for the input body
+$input-form-body-top: var(--input-form-body-top, #{$input-form-label-padding});
+$input-form-body-left: var(
+	--input-form-body-left,
+	#{$input-form-label-padding}
+);
+$input-form-body-width: var(--input-form-body-width, 1rem);
+$input-form-body-height: var(--input-form-body-height, 1rem);
+$input-form-body-border: var(--input-form-body-border, 1px solid currentColor);
+$input-form-body-shadow: var(--input-body-form-shadow, #{$input-form-shadow});
+$input-form-body-background: var(--input-form-body-background, white);
+$input-form-body-border-radius: var(--input-form-body-border-radius, 2px);
+$input-form-body-transition: var(
+	--input-form-body-transition,
+	#{$input-form-transition}
+);
+
+// Styling for the check
+$input-form-check-border-radius: var(
+	--input-checkbox-check-border-radius,
+	#{$input-form-body-border-radius}
+);
+$input-form-check-top: var(
+	--input-form-check-top,
+	calc(#{$input-form-label-padding} + (#{$input-form-body-height} / 2))
+);
+$input-form-check-left: var(
+	--input-form-check-left,
+	calc(#{$input-form-label-padding} + (#{$input-form-body-width} / 2))
+);
+$input-form-check-border: var(--input-form-check-border, 0);
+$input-form-check-width: var(--input-form-check-width, 0.5rem);
+$input-form-check-height: var(--input-form-check-height, 0.5rem);
+$input-form-check-background: var(--input-form-check-background, currentcolor);
+$input-form-check-border-radius: var(--input-form-check-border-radius, 0);
+$input-form-check-transition: var(
+	--input-form-check-transition,
+	#{$input-form-transition}
+);
+
+// Specific styling for only the Radio by default.
+$input-radio-body-border-radius: var(--input-radio-body-border-radius, 50%);
+$input-radio-check-border-radius: var(--input-radio-check-border-radius, 50%);
+
+// Need values from above. Calculate the top and left of the check.
+$input-form-check-top: var(
+	--input-form-check-top,
+	calc(
+		#{$input-form-label-padding} + (#{$input-form-body-height} / 2 - #{$input-form-check-height} /
+					2)
+	)
+);
+$input-form-check-left: var(
+	--input-form-check-left,
+	calc(
+		#{$input-form-label-padding} + (#{$input-form-body-width} / 2 - #{$input-form-check-width} /
+					2)
+	)
+);
+$input-form-label-padding-left: var(
+	--input-form-label-padding-left,
+	calc(
+		#{$input-form-body-width} + #{$input-form-label-padding} + #{$input-form-body-left}
+	)
+);
+
+@mixin input-form-input($class: null, $type: 'checkbox') {
+	@if type-of($type) == 'list'{
+		@each $t in $type{
+			#{$class} input[type='#{$t}'] {
+				@content;
+			}			
+		}
+	} @else {
+		#{$class} input[type='#{$type}'] {
+			@content;
+		}
+	}
+}
+@mixin input-form-body($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		& + label::before {
+			@content;
+		}
+	}
+}
+@mixin input-form-label($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		& + label {
+			@content;
+		}
+	}
+}
+@mixin input-form-label-checked($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:checked + label {
+			@content;
+		}
+	}
+}
+@mixin input-form-label-hover($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:hover + label {
+			@content;
+		}
+	}
+}
+@mixin input-form-label-focus($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:focus + label {
+			@content;
+		}
+	}
+}
+@mixin input-form-focus($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:focus + label {
+			@content;
+		}
+	}
+}
+@mixin input-form-body-checked($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:checked + label::before {
+			@content;
+		}
+	}
+}
+@mixin input-form-check($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		& + label::after {
+			@content;
+		}
+	}
+}
+@mixin input-form-check-checked($class: null, $type: null) {
+	@include input-form-input($class, $type) {
+		&:checked + label::after {
+			@content;
+		}
+	}
+}
+
+@mixin input-form-container($class: null, $type: null) {
+	@if $class != null{
+		#{$class}{
+			position: relative;
+		}
+	} 
+	@include input-form($class, $type){
+		@content;
+	};
+}
+
+// Aliases For Checkbox
+@mixin input-checkbox($class: null, $type: 'checkbox') {
+	@include input-form($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-focus($class: null, $type: 'checkbox') {
+	@include input-form-focus($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-body($class: null, $type: 'checkbox') {
+	@include input-form-body($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-input($class: null, $type: 'checkbox') {
+	@include input-form-input($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-label($class: null, $type: 'checkbox') {
+	@include input-form-label($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-label-focus($class: null, $type: 'checkbox') {
+	@include input-form-label-focus($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-label-checked($class: null, $type: 'checkbox') {
+	@include input-form-label-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-body-checked($class: null, $type: 'checkbox') {
+	@include input-form-body-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-check($class: null, $type: 'checkbox') {
+	@include input-form-check($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-check-checked($class: null, $type: 'checkbox') {
+	@include input-form-check-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-checkbox-container($class: null, $type: 'checkbox') {
+	@include input-form-container($class, $type) {
+		@content;
+	}
+}
+
+// Aliases For Radio
+@mixin input-radio($class: null, $type: 'radio') {
+	@include input-form($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-focus($class: null, $type: 'radio') {
+	@include input-form($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-body($class: null, $type: 'radio') {
+	@include input-form-body($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-input($class: null, $type: 'radio') {
+	@include input-form-input($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-label($class: null, $type: 'radio') {
+	@include input-form-label($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-label-focus($class: null, $type: 'radio') {
+	@include input-form-label-focus($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-label-checked($class: null, $type: 'radio') {
+	@include input-form-label-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-body-checked($class: null, $type: 'radio') {
+	@include input-form-body-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-check($class: null, $type: 'radio') {
+	@include input-form-check($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-check-checked($class: null, $type: 'radio') {
+	@include input-form-check-checked($class, $type) {
+		@content;
+	}
+}
+@mixin input-radio-container($class: null, $type: 'radio') {
+	@include input-form-container($class, $type) {
+		@content;
+	}
+}
+
+
+@mixin input-form($class: null, $type: 'checkbox') {
+	@include input-form-input($class,$type) {
+		position: absolute;
+		width: 0;
+		height: 0;
+		clip-path: inset(100% 100% 100% 100%);
+		opacity: 0;
+		@content;
+	}
+
+	@include input-form-label($class,$type) {
+		position: relative;
+		display: block;
+		box-shadow: $input-form-shadow;
+		border-radius: $input-form-label-border-radius;
+		color: $input-form-label-text-color;
+		transition: $input-form-label-transition;
+		padding: $input-form-label-padding;
+		padding-left: $input-form-label-padding-left;
+	}
+	@include input-form-body($class,$type) {
+		content: '';
+		position: absolute;
+		top: $input-form-body-top;
+		left: $input-form-body-left;
+		display: block;
+		width: $input-form-body-width;
+		height: $input-form-body-height;
+		box-shadow: $input-form-body-shadow;
+		box-sizing: border-box;
+		border: $input-form-body-border;
+		border-radius: $input-form-body-border-radius;
+		background: $input-form-body-background;
+		transition: $input-form-body-transition;
+		@if $type == 'radio' {
+			border-radius: $input-radio-body-border-radius;
+		}
+	}
+	@include input-form-check($class,$type) {
+		content: '';
+		position: absolute;
+		top: $input-form-check-top;
+		left: $input-form-check-left;
+		display: block;
+		width: $input-form-check-width;
+		height: $input-form-check-height;
+		background-color: $input-form-check-background;
+		transform: scale(0);
+		transition: $input-form-check-transition;
+		@if $type == 'radio' {
+			border-radius: $input-radio-check-border-radius;
+		}
+	}
+	@include input-form-check-checked($class,$type) {
+		transform: scale(1);
+	}
+}

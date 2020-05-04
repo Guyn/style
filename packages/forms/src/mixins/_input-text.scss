@@ -1,0 +1,195 @@
+// Styling for the input element
+$input-text-input-width: var(--input-text-input-width, 100%) !default;
+$input-text-input-shadow: var(--input-text-input-shadow, 0 0 1rem 0 rgba(0,0,0,0)) !default;
+$input-text-input-focus-shadow: var(--input-text-input-shadow, 0 0 1rem 0 rgba(0,0,0,0.25)) !default;
+$input-text-input-border: var(--input-text-input-border, 1px solid currentColor) !default;
+$input-text-input-background: var(--input-text-input-background, transparent) !default;
+$input-text-input-color: var(--input-text-input-color, currentColor) !default;
+$input-text-input-font-size: var(--input-text-input-font-size, 1em) !default;
+$input-text-input-font-family: var(--input-text-input-font-family, inherit) !default;
+$input-text-input-padding: var(--input-text-input-padding, 1em) !default;
+$input-text-input-opacity: var(--input-text-input-opacity, 1) !default;
+$input-text-input-transition: var(--input-text-input-transition, 0.3s ease-in-out) !default;
+
+// Styling for the label
+$input-text-label-width: var(--input-text-label-width, 50%) !default;
+$input-text-label-shadow: var(--input-text-label-shadow, 0 0 1rem 0 rgba(0,0,0,0)) !default;
+$input-text-label-border: var(--input-text-label-border, 0) !default;
+$input-text-label-background: var(--input-text-label-background, transparent) !default;
+$input-text-label-color: var(--input-text-label-color, currentColor) !default;
+$input-text-label-font-size: var(--input-text-label-font-size, 1em) !default;
+$input-text-label-font-family: var(--input-text-label-font-family, inherit) !default;
+$input-text-label-padding: var(--input-text-label-padding, 1em) !default;
+$input-text-label-opacity: var(--input-text-label-opacity, 0.75) !default;
+$input-text-label-transition: var(--input-text-label-transition, 0.3s ease-in-out) !default;
+
+// Styling for the pseudo elements or depending on
+$input-text-label-focus-opacity: var(--input-text-label-focus-opacity, 1) !default;
+$input-text-label-filled-opacity: var(--input-text-label-filled-opacity, 1) !default;
+$input-text-placeholder-focus-opacity: var(--input-text-placeholder-focus-opacity,0.5) !default;
+
+// Styling for the container of the inputs
+$input-text-container-position: var(--input-text-container-position, relative) !default;
+$input-text-container-width: var(--input-text-container-width, 100%) !default;
+$input-text-container-reverse: true !default;
+$input-text-container-margin: var(--input-text-container-margin, 1em) !default;
+
+
+@mixin input-text-input($types: null){
+	@if $types != null{
+		@if type-of($types) == 'list'{
+				$typeList: '';
+				@each $type in $types{
+					@if $typeList != ''{
+						$typeList: "input[type='#{$type}'],#{$typeList}"
+					}
+					@else {
+						$typeList: "input[type='#{$type}']";
+					}
+				}
+				#{$typeList}{
+					@content;
+				}
+		} @else {
+			input[type='#{$types}']{
+				@content;
+			}	
+		}
+	} @else {
+		input[type='email'],
+		input[type='tel'],
+		input[type='number'],
+		input[type='search'],
+		input[type='url'],
+		input[type='password'],
+		input[type='date'],
+		input[type='datetime-local'],
+		input[type='month'],
+		input[type='time'],
+		input[type='text'] {
+			@content;
+		}			
+	}
+}
+@mixin input-text($types:null) {
+	@include input-text-input($types){
+		width: $input-text-input-width;
+		box-shadow:$input-text-input-shadow;
+		border: $input-text-input-border;
+		background-color:$input-text-input-background;
+		color: $input-text-input-color;
+		font-size:$input-text-input-font-size;
+		font-family: $input-text-input-font-family;
+		opacity: $input-text-input-opacity;
+		transition: $input-text-input-transition;
+		padding: $input-text-input-padding;
+	}
+	@include input-text-label($types) {
+		width: $input-text-label-width;
+		box-shadow:$input-text-label-shadow;
+		border: $input-text-label-border;
+		background-color:$input-text-label-background;
+		color: $input-text-label-color;
+		font-size:$input-text-label-font-size;
+		font-family: $input-text-label-font-family;
+		opacity: $input-text-label-opacity;
+		transition: $input-text-label-transition;
+		padding: $input-text-label-padding;
+	}
+	@include input-text-focus($types) {
+		z-index: 2;
+		box-shadow: $input-text-input-focus-shadow;
+		outline: none;
+	}
+	@include input-text-label-focus($types) {
+		opacity: $input-text-label-focus-opacity;
+	}
+	@include input-text-placeholder($types) {
+		opacity: $input-text-placeholder-focus-opacity;
+	}
+	@include input-text-label-filled($types) {
+		opacity:  $input-text-label-filled-opacity;
+	}	
+	@content;
+}
+
+@mixin input-text-container($class: null, $types:null){
+	@if $class != null{
+	
+		#{$class}{	
+			position: $input-text-container-position;
+			z-index: 1;
+			display: flex;
+			width: $input-text-container-width;
+			@if $input-text-container-reverse{
+				flex-flow: row-reverse;
+			}
+		
+			& + #{$class}{
+				margin-top: $input-text-container-margin;
+			}
+			@content;
+			@include input-text($types);
+		}
+	} @else {	
+		position: $input-text-container-position;
+		z-index: 1;
+		width: $input-text-container-width;
+		display: flex;
+		@if $input-text-container-reverse{
+			flex-flow: row-reverse;
+		}
+		@include input-text($types);
+		@content;
+	}	
+}
+@mixin input-text-label($types: null) {
+	@include input-text-input($types) {
+		& + label {
+			@content;
+		}
+	}
+}
+
+@mixin input-text-focus($types: null) {
+	@include input-text-input($types) {
+		&:focus {
+			@content;
+		}
+	}
+}
+@mixin input-text-label-focus($types: null) {
+	@include input-text-input($types) {
+		&:focus + label {
+			@content;
+		}
+	}
+}
+@mixin input-text-placeholder($types: null) {
+	@include input-text-input($types)  {
+		&::placeholder {
+			@content;
+		}
+	}
+}
+@mixin input-text-placeholder-shown($types: null) {
+	@include input-text-input($types)  {
+		&:placeholder-shown {
+			@content;
+		}
+	}
+}
+@mixin input-text-placeholder-not-shown($types: null) {
+	@include input-text-input($types)  {
+		&:not(:placeholder-shown) {
+			@content;
+		}
+	}
+}
+@mixin input-text-label-filled($types: null) {
+	@include input-text-placeholder-not-shown($types) {
+		& + label{
+			@content;
+		}
+	}
+}
