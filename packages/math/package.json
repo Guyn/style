@@ -7,5 +7,6 @@
 		"test": "sass test/index.scss"
 	},
 	"author": "Sil van Diepen",
-	"license": "MIT"
+	"license": "MIT",
+	"gitHead": "3d250baff4f97490590695abe449d52eb0467a38"
 }
