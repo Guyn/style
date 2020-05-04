@@ -1,7 +1,7 @@
 {
-	"name": "@guyn-style/output",
+	"name": "@guyn-style/debug",
 	"version": "0.1.0-alpha.1",
-	"description": "Guyn Style Output Module",
+	"description": "Guyn Style Debug Module",
 	"main": "index.scss",
 	"scripts": {
 		"test": "sass test/index.scss"

@@ -1,7 +1,7 @@
 {
-	"name": "@guyn-style/output",
+	"name": "@guyn-style/ease-gradient",
 	"version": "0.1.0-alpha.1",
-	"description": "Guyn Style Output Module",
+	"description": "Guyn Style Ease Gradient Module",
 	"main": "index.scss",
 	"scripts": {
 		"test": "sass test/index.scss"

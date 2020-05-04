@@ -1,7 +1,7 @@
 {
-	"name": "@guyn-style/output",
+	"name": "@guyn-style/menu",
 	"version": "0.1.0-alpha.1",
-	"description": "Guyn Style Output Module",
+	"description": "Guyn Style Menu Module",
 	"main": "index.scss",
 	"scripts": {
 		"test": "sass test/index.scss"
