@@ -1,6 +1,6 @@
 {
 	"name": "guyn-style",
-	"version": "0.1.0-alpha.10",
+	"version": "0.1.0-alpha.11",
 	"description": "Guyn Style Main package",
 	"main": "src/index.scss",
 	"scripts": {
@@ -22,7 +22,7 @@
 		"@guyn-style/menu": "^0.1.0-alpha.7",
 		"@guyn-style/output": "^0.1.0-alpha.9",
 		"@guyn-style/patterns": "^0.1.0-alpha.9",
-		"@guyn-style/reset": "^0.1.0-alpha.9",
+		"@guyn-style/reset": "^0.1.0-alpha.11",
 		"@guyn-style/settings": "^0.1.0-alpha.7",
 		"@guyn-style/typography": "^0.1.0-alpha.9",
 		"@guyn-style/utilities": "^0.1.0-alpha.9"
