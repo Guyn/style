@@ -1,6 +1,6 @@
 {
 	"name": "@guyn-style/ease-gradient",
-	"version": "0.1.0-alpha.7",
+	"version": "0.1.0-alpha.9",
 	"description": "Guyn Style Ease Gradient Module",
 	"main": "index.scss",
 	"private": false,
