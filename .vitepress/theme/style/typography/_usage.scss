@@ -21,6 +21,7 @@ h2 {
 
 h1 {
 	font-size: grid(1);
+	font-weight: 600;
 	line-height: 1;
 	@include min-(font-size, 1, 48);
 	@include max-(font-size, 1, 96);

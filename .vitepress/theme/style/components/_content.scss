@@ -1,13 +1,37 @@
 .content {
 	padding: grid(1);
 	@include min-(padding, 1, $mobile-padding);
-	max-width: 72ch;
-	margin: auto;
 
+	margin: auto;
+	max-width: calc(72ch + 4em);
+	p {
+		max-width: 72ch;
+	}
 	p:first-child {
 		font-size: 1.25em;
 	}
 
+	h1,
+	h2,
+	h3,
+	h4 {
+		position: relative;
+
+		a.header-anchor {
+			position: absolute;
+			left: 0;
+			top: 50%;
+			font-size: 1rem;
+			border: 2px solid blue;
+			width: 2em;
+			height: 2em;
+			line-height: 1.75;
+			text-align: center;
+			border-radius: 50%;
+			transform: translate(-100%, -50%);
+			text-decoration: none;
+		}
+	}
 	pre {
 		background-color: black;
 		padding: 1em;
@@ -16,9 +40,23 @@
 		max-width: 100%;
 		overflow: scroll;
 		width: auto;
+		line-height: 1.5;
 	}
 	code {
 		background-color: rgba(0, 0, 0, 0.1);
 		display: inline-block;
+		padding: 0.5em;
+	}
+	table {
+		width: 100%;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		td {
+			padding: 1em;
+		}
+		thead {
+			td {
+				text-align: left;
+			}
+		}
 	}
 }

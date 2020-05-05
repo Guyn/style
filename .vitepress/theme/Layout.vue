@@ -1,14 +1,19 @@
 <template>
-	<h1 id="logo"><a href="/docs/get-started">Guyn</a></h1>
+	<h1 id="logo">
+		<a href="/docs/get-started">Guyn</a
+		><span class="version">{{ version }}</span>
+	</h1>
 	<Navigation />
 	<Content class="content" /><!-- make sure to include markdown outlet -->
 	<Packages />
 </template>
 
 <script>
-import Navigation from "./Navigation.vue";
-import Packages from "./Packages.vue";
+import { Navigation, Packages } from "./components/index.js";
 export default {
+	data: () => ({
+		version: "0.1.0",
+	}),
 	components: {
 		Navigation,
 		Packages,
@@ -21,13 +26,21 @@ export default {
 	position: fixed;
 	top: 1em;
 	left: 1em;
-	background-color: black;
+	background-color: blue;
 	font-size: 1em;
 	text-transform: lowercase;
 	color: white;
 	padding: 1em;
 	a {
+		font-weight: 600;
+		text-decoration: none;
 		color: currentColor;
+	}
+	span {
+		position: absolute;
+		left: calc(100% + 1em);
+		color: black;
+		opacity: 0.25;
 	}
 }
 </style>
