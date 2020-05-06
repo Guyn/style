@@ -1,6 +1,6 @@
 {
 	"name": "guyn-style",
-	"version": "0.1.0-alpha.11",
+	"version": "0.1.0-alpha.12",
 	"description": "Guyn Style Main package",
 	"main": "src/index.scss",
 	"scripts": {
@@ -12,7 +12,7 @@
 	"dependencies": {
 		"@guyn-style/animate": "^0.1.0-alpha.9",
 		"@guyn-style/color": "^0.1.0-alpha.9",
-		"@guyn-style/custom": "^0.1.0-alpha.10",
+		"@guyn-style/custom": "^0.1.0-alpha.12",
 		"@guyn-style/debug": "^0.1.0-alpha.7",
 		"@guyn-style/default": "^0.1.0-alpha.9",
 		"@guyn-style/ease-gradient": "^0.1.0-alpha.9",
