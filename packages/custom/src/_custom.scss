@@ -56,15 +56,17 @@ $output: () !default;
 	@debug "	╭#{repeat-str(" ─ ",39)}┬#{repeat-str(" ─ ",20)}╮";
 	@debug "	│#{repeat-str(" ",39)}│#{repeat-str(" ",20)}│";
 	@if $key {
-		@debug "	│#{add-length(" ",5)}#{add-length($key,34)}│#{add-length("
-			",5)}#{add-length(to-str(map-get($output,$key)), 16)}│";
+		$str: "	│#{add-length(" ",5)}#{add-length($key,34)}│";
+		$str: "#{$str}#{add-length("",5)}#{add-length(to-str(map-get($output,$key)), 16)}│";
+		@debug "#{$str}";
 		@debug "	│#{repeat-str(" ",39)}│#{repeat-str(" ",20)}│";
 		$value: map-get($output, $key);
 	} @else {
 		@each $output-key, $output-value in $output {
-			@debug "	│#{add-length(" ",5)}#{add-length($output-key,30)}#{add-length("
-				",5)}│#{add-length("
-				",5)}#{add-length(to-str(map-get($output-value,$key)), 16)}│";
+			$str: "	│#{add-length(" ",5)}#{add-length($output-key,30)}";
+			$str: "#{$str}#{add-length("",5)}│#{add-length("",5)}#";
+			$str: "#{$str}#{add-length(to-str(map-get($output-value,$key)), 16)}│";
+			@debug "#{$str}";
 			@debug "	│#{repeat-str(" ",39)}│#{repeat-str(" ",20)}│";
 		}
 		$value: $key;
