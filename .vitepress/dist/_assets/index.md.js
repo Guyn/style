@@ -1,0 +1,1 @@
+import{q as t,p as e,t as r}from"./runtime-core.esm-bundler-9a3744ec.js";const n='{"title":"","frontmatter":{},"lastUpdated":1588599772351.0083}';var s={};const a=r("div",{class:"vitepress-content"},[r("p",null,[r("a",{href:"/docs/index.html"},"Get Started")])],-1);s.render=function(r,n){return e(),t("div",null,[a])};export default s;export{n as __pageData};
