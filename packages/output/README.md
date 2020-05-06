@@ -1,6 +1,6 @@
 # Output
 
-Henri's offers the option to choose your outputs, by default it outputs **no css at all**.
+Guyn offers the option to choose your outputs, by default it outputs **no css at all**.
 
 ## Default settings
 
@@ -15,7 +15,7 @@ $output: set-output(css, true);
 
 ## All settings
 
-If you want to use all Henris settings you can add the following code to your main scss file:
+If you want to use all Guyn settings you can add the following code to your main scss file:
 
 ```scss
 @import "~henris/custom-output";
@@ -36,7 +36,7 @@ $output: set-output(button, true);
 ```
 
 ::: tip
-NB: You need to add the output settings to your css file **above** the Henris import.
+NB: You need to add the output settings to your css file **above** the Guyn import.
 :::
 
 ## Default settings

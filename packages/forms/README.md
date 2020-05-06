@@ -391,7 +391,7 @@ body {
 
 ## Input Text
 
-Styling input fields can be a pain, but Henri's makes it a little easier without losing all control. The only thing necessary is just to keep up with a simple buildup.
+Styling input fields can be a pain, but Guyn makes it a little easier without losing all control. The only thing necessary is just to keep up with a simple buildup.
 
 <div class="html-example">
 <form>

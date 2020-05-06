@@ -79,7 +79,7 @@ $font-primary: (
 
 ### classes
 
-Henri's can automatically generate classes based on the given font-weights. Enable the `weight-classes` and henris will give you classes like `.font-light{ font-weight: 100; }`
+Guyn can automatically generate classes based on the given font-weights. Enable the `weight-classes` and guyn will give you classes like `.font-light{ font-weight: 100; }`
 
 ### function
 
@@ -107,7 +107,7 @@ If you want to use a font-weight, which is overruled by an earlier set. You can 
 
 ### classes
 
-Henri's can automatically generate classes based on the given font-weights. Enable the `weight-classes` and henris will give you classes like `.font-light{ font-weight: 100; }`
+Guyn can automatically generate classes based on the given font-weights. Enable the `weight-classes` and guyn will give you classes like `.font-light{ font-weight: 100; }`
 
 ### function
 
@@ -131,7 +131,7 @@ If you want to use a font-weight, which is overruled by an earlier set. You can 
 
 ## Loading fonts
 
-Henri's has a special way of embedding fonts. Fonts includes can be setup by defining a map containing all the necessary information. When this variable is set, Henri's will automatically load the fonts and set all necessary use cases from this config.
+Guyn has a special way of embedding fonts. Fonts includes can be setup by defining a map containing all the necessary information. When this variable is set, Guyn will automatically load the fonts and set all necessary use cases from this config.
 
 ### Defining fonts
 
@@ -162,7 +162,7 @@ There are 4 fonts to be set this way. Defining any of the variables below the co
 
 ## Example
 
-The below example is how you structure a config file. When this variable is set before the include of Henri's. Henri's will pick this up and load the font. The below example will load the Graphik font, in all the given weights,for all the given files. Won't create classes for the weights but will automatically add the font-family already to all elements given in Use.
+The below example is how you structure a config file. When this variable is set before the include of Guyn. Guyn will pick this up and load the font. The below example will load the Graphik font, in all the given weights,for all the given files. Won't create classes for the weights but will automatically add the font-family already to all elements given in Use.
 
 ```scss
 $font-primary: (

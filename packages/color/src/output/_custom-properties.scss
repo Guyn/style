@@ -2,9 +2,9 @@
 //	Create all custom-properties for all the colors in the	   */
 //	current colorset. 										  */
 // --------------------------------------------------------- */
-@mixin henris-custom-properties-color(){
+@mixin guyn-custom-properties-color() {
 	@each $color-name, $color-value in $color-default {
-		$variable: '--color-#{to-lower-case($color-name)}';
+		$variable: "--color-#{to-lower-case($color-name)}";
 		//hex
 		#{$variable}: $color-value;
 		//hsl
@@ -15,12 +15,11 @@
 		#{$variable}-r: red($color-value);
 		#{$variable}-g: green($color-value);
 		#{$variable}-b: blue($color-value);
-		#{$variable}-rgb: red($color-value), green($color-value),
-			blue($color-value);
+		#{$variable}-rgb: red($color-value), green($color-value), blue($color-value);
 	}
 }
-@if output('custom-properties-color') {
+@if output("custom-properties-color") {
 	:root {
-		@include henris-custom-properties-color();
+		@include guyn-custom-properties-color();
 	}
 }

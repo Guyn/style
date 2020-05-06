@@ -337,7 +337,7 @@ This will result in an element like this:
 
 # Media Queries
 
-Henri's provides a few set media queries which can be used.
+Guyn provides a few set media queries which can be used.
 
 | variable        | aka                                    | Description                                                  |
 | --------------- | -------------------------------------- | ------------------------------------------------------------ |

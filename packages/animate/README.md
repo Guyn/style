@@ -2,7 +2,7 @@
 
 ## Easing
 
-Henri's comes with a some default great easing.
+Guyn comes with a some default great easing.
 
 ### The function
 
@@ -121,7 +121,7 @@ Will generate:
 
 ### Multiple transition proprieties
 
-Henris comes with a mixin to easily define a bunch of transitions on the same element. The `transition-group` mixin will also generate the `will-change` property.
+Guyn comes with a mixin to easily define a bunch of transitions on the same element. The `transition-group` mixin will also generate the `will-change` property.
 
 ```scss
 // list definition
