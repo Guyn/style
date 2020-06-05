@@ -22,7 +22,7 @@
 				</a>
 			</li>
 			<li class="packages__item">
-				<a class="packages__link" href="/packages/animate/README">Forms</a>
+				<a class="packages__link" href="/packages/forms/README">Forms</a>
 			</li>
 			<li class="packages__item">
 				<a class="packages__link" href="/packages/grid/README">Grid</a>

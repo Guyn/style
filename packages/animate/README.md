@@ -6,7 +6,7 @@ Guyn comes with a some default great easing.
 
 ### The function
 
-To include an Henri easing use `ease($ease-name)`
+To include an Guyn ease use `ease($ease-name)`
 
 Example :
 

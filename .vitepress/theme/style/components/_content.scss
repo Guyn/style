@@ -3,7 +3,7 @@
 	@include min-(padding, 1, $mobile-padding);
 
 	margin: auto;
-	max-width: calc(72ch + 4em);
+	max-width: 960px;
 	p {
 		max-width: 72ch;
 	}
@@ -22,14 +22,37 @@
 			left: 0;
 			top: 50%;
 			font-size: 1rem;
-			border: 2px solid blue;
 			width: 2em;
 			height: 2em;
-			line-height: 1.75;
 			text-align: center;
+			line-height: 1.75;
 			border-radius: 50%;
 			transform: translate(-100%, -50%);
 			text-decoration: none;
+			color: black;
+			opacity: 0.25;
+			transition: opacity 0.3s ease-in-out;
+			&::before {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				border: 2px solid blue;
+				transform: translate(-50%, -50%) scale(0);
+
+				border-radius: 50%;
+				transition: transform 0.3s ease-in-out;
+			}
+			&:hover {
+				opacity: 1;
+				color: blue;
+				&::before {
+					transform: translate(-50%, -50%) scale(1);
+				}
+			}
 		}
 	}
 	pre {
@@ -50,11 +73,13 @@
 	table {
 		width: 100%;
 		border: 1px solid rgba(0, 0, 0, 0.1);
-		td {
+		td,
+		th {
 			padding: 1em;
 		}
 		thead {
-			td {
+			td,
+			th {
 				text-align: left;
 			}
 		}

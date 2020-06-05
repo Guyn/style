@@ -10,6 +10,7 @@
 
 <script>
 import { Navigation, Packages } from "./components/index.js";
+// import Package from "../package.json";
 export default {
 	data: () => ({
 		version: "0.1.0",
@@ -17,6 +18,9 @@ export default {
 	components: {
 		Navigation,
 		Packages,
+	},
+	mounted() {
+		// console.log(Package);
 	},
 };
 </script>

@@ -7,7 +7,7 @@
 	$round: 0,
 	$transition-duration: 0.3s
 ) {
-	$mixed: true !global;
+	$menu-mixed: true !global;
 
 	// $width number check: Dirty fix, because apparently vw's are not numbers.
 	@if type-of($width) == "number" {
@@ -21,19 +21,19 @@
 			$gutter: rem($gutter);
 		}
 		@if unit($gutter) == unit($height) == unit($width) {
-			$mixed: false;
+			$menu-mixed: false;
 		}
 	} @else {
-		$mixed: false;
+		$menu-mixed: false;
 	}
 
 	$margin: calc(#{$height} + #{$gutter});
 	$margin-left: calc(#{$width} / 2);
-	$margin-top: calc(#{$height} / 2 * -1);
+	$margin-top: calc(#{$height} / 2);
 	$top: calc(#{$height} + #{$gutter});
 
 	// Set margins
-	@if $mixed == false {
+	@if $menu-mixed == false {
 		$margin: $height + $gutter;
 		$margin-left: $width / 2;
 		$margin-top: -#{$height / 2};
@@ -58,7 +58,7 @@
 
 	// The code for the span
 	user-select: none;
-	@if $mixed {
+	@if $menu-mixed {
 		margin: #{$margin-top} auto #{$margin} calc(#{$margin-left} * -1);
 	} @else {
 		margin: #{$margin-top} auto #{$margin} #{$margin-left * -1};
@@ -87,7 +87,7 @@
 
 	// Top bar
 	&::before {
-		@if $mixed {
+		@if $menu-mixed {
 			top: calc(#{$top} * -1);
 		} @else {
 			top: #{$top * -1};
@@ -104,7 +104,7 @@
 	&::before,
 	&::after {
 		top: 0px;
-		@if $mixed {
+		@if $menu-mixed {
 			margin-top: calc(
 				(#{$menu-height} / 2) + (#{$menu-gutter} + #{$menu-height}) * -1
 			);
@@ -116,14 +116,14 @@
 	& {
 		background-color: transparent;
 
-		@if $mixed {
+		@if $menu-mixed {
 			transform: translateY(calc((#{$menu-height} * -1) / 2));
 		} @else {
 			transform: translateY(-#{$menu-height / 2});
 		}
 	}
 	&::before {
-		@if $mixed {
+		@if $menu-mixed {
 			transform: translateY(calc(#{$menu-gutter} + #{$menu-height}))
 				rotate(45deg);
 		} @else {
@@ -131,7 +131,7 @@
 		}
 	}
 	&::after {
-		@if $mixed {
+		@if $menu-mixed {
 			transform: translateY(calc(#{$menu-gutter} + #{$menu-height}))
 				rotate(-45deg);
 		} @else {

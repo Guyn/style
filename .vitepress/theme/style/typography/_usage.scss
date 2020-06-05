@@ -1,3 +1,13 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+}
+
 body {
 	font-family: "Inter", sans-serif;
 }
@@ -57,4 +67,7 @@ blockquote {
 }
 p:first-child {
 	font-size: 1.25rem;
+}
+p {
+	line-height: 1.75;
 }

@@ -6,7 +6,8 @@
 	"scripts": {
 		"test": "npm run test",
 		"docs:build": "npx vitepress build",
-		"docs:dev": "npx vitepress"
+		"docs:dev": "npx vitepress",
+		"dev": "npm run docs:dev"
 	},
 	"repository": {
 		"type": "git",
@@ -26,6 +27,7 @@
 	},
 	"homepage": "https://github.com/Guyn/style#readme",
 	"devDependencies": {
+		"@guyn/color": "0.0.2",
 		"lerna": "^3.19.0",
 		"node-sass": "^4.14.0",
 		"sass": "^1.26.5",

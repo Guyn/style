@@ -14,6 +14,18 @@
 	</nav>
 </template>
 
+<script>
+// import { getRoutes } from "../plugins/getRoutes";
+export default {
+	async beforeCreate() {
+		console.log("log", process);
+		// console.log("haaai");
+		// const routes = await getRoutes("docs");
+		// console.log(routes);
+	},
+};
+</script>
+
 <style lang="scss">
 .navigation {
 	width: auto;
