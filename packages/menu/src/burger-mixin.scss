@@ -36,7 +36,7 @@
 	@if $menu-mixed == false {
 		$margin: $height + $gutter;
 		$margin-left: $width / 2;
-		$margin-top: -#{$height / 2};
+		$margin-top: #{$height / 2};
 		$top: #{($height + $gutter)};
 	}
 
@@ -115,6 +115,7 @@
 	}
 	& {
 		background-color: transparent;
+		margin-top: -#{$menu-margin-top};
 
 		@if $menu-mixed {
 			transform: translateY(calc((#{$menu-height} * -1) / 2));
