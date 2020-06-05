@@ -115,7 +115,7 @@
 	}
 	& {
 		background-color: transparent;
-		margin-top: -#{$menu-margin-top};
+		margin-top: calc(#{$menu-margin-top} * -1);
 
 		@if $menu-mixed {
 			transform: translateY(calc((#{$menu-height} * -1) / 2));
