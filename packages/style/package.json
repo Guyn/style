@@ -1,6 +1,6 @@
 {
 	"name": "guyn-style",
-	"version": "0.1.0-alpha.12",
+	"version": "0.1.0-alpha.13",
 	"description": "Guyn Style Main package",
 	"main": "src/index.scss",
 	"scripts": {
@@ -10,21 +10,21 @@
 	"license": "MIT",
 	"gitHead": "95dc8f6d8da4a113c17f317e80a658f4940809cb",
 	"dependencies": {
-		"@guyn-style/animate": "^0.1.0-alpha.9",
-		"@guyn-style/color": "^0.1.0-alpha.9",
+		"@guyn-style/animate": "^0.1.0-alpha.13",
+		"@guyn-style/color": "^0.1.0-alpha.13",
 		"@guyn-style/custom": "^0.1.0-alpha.12",
 		"@guyn-style/debug": "^0.1.0-alpha.7",
 		"@guyn-style/default": "^0.1.0-alpha.9",
-		"@guyn-style/ease-gradient": "^0.1.0-alpha.9",
-		"@guyn-style/forms": "^0.1.0-alpha.8",
-		"@guyn-style/grid": "^0.1.0-alpha.9",
+		"@guyn-style/ease-gradient": "^0.1.0-alpha.13",
+		"@guyn-style/forms": "^0.1.0-alpha.13",
+		"@guyn-style/grid": "^0.1.0-alpha.13",
 		"@guyn-style/math": "^0.1.0-alpha.7",
-		"@guyn-style/menu": "^0.1.0-alpha.7",
-		"@guyn-style/output": "^0.1.0-alpha.9",
+		"@guyn-style/menu": "^0.1.0-alpha.13",
+		"@guyn-style/output": "^0.1.0-alpha.13",
 		"@guyn-style/patterns": "^0.1.0-alpha.9",
-		"@guyn-style/reset": "^0.1.0-alpha.11",
-		"@guyn-style/settings": "^0.1.0-alpha.7",
-		"@guyn-style/typography": "^0.1.0-alpha.9",
+		"@guyn-style/reset": "^0.1.0-alpha.13",
+		"@guyn-style/settings": "^0.1.0-alpha.13",
+		"@guyn-style/typography": "^0.1.0-alpha.13",
 		"@guyn-style/utilities": "^0.1.0-alpha.9"
 	}
 }
