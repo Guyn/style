@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@guyn/color": "0.0.2",
 		"lerna": "^3.19.0",
-		"node-sass": "^4.14.0",
+		"node-sass": "^7.0.0",
 		"sass": "^1.26.5",
 		"vitepress": "^0.1.1"
 	}
